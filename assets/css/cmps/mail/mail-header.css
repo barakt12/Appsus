@@ -1,0 +1,18 @@
+.mail-header {
+    height: 4rem;
+    font-size: 0.8125rem;
+    line-height: 1.6875rem;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.mail-header .mail-logo {
+    min-width: 14.875rem;
+    font: 0.8125rem/1.6875rem;
+}
+
+.mail-header .mail-header-btns {
+    width: 10.5rem;
+}

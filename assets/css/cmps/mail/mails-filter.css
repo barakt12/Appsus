@@ -1,0 +1,31 @@
+.mail-filter-box-container {
+    height: 40px;
+    width: 100%;
+    align-self: stretch;
+    justify-self: stretch;
+    display: flex;
+    justify-content: center;
+}
+
+.mail-filter-box-container form {
+    border: 1px solid transparent;
+    font: 0.8125rem/1.6875rem;
+    width: 80%;
+    height: 100%;
+    background-color: #f1f3f4;
+    border-radius: 8px;
+    line-height: 1.6875px;
+
+}
+
+.mail-filter-box-container input {
+    width: 80%;
+    height: 100%;
+    font-size: 1rem;
+    background: none;
+    border: none;
+}
+
+.mail-filter-box-container input:focus-visible {
+    outline: none;
+}

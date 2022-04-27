@@ -6,6 +6,12 @@
 /* Cmps  */
 @import './cmps/app-footer.css';
 @import './cmps/app-header.css';
+@import './cmps/mail/mail-header.css';
+@import './cmps/mail/mails-list.css';
+@import './cmps/mail/mail-preview.css';
+@import './cmps/mail/side-bar.css';
+@import './cmps/mail/mails-filter.css';
+@import './cmps/mail/mail-app.css';
 
 /* Apps  */
 @import './apps/keep/keep-app.css';

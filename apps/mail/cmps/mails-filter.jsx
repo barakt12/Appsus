@@ -1,4 +1,4 @@
-export class MailsFilter extends React.Components {
+export class MailsFilter extends React.Component {
     state = {
         filterBy: {
             isRead: '',
@@ -8,7 +8,21 @@ export class MailsFilter extends React.Components {
         }
     }
 
+
+
+    handleChange = ({ target }) => {
+        const value = target.value
+        this.setState((prevState) => ({ filterBy: { ...prevState.filterBy, searchInp: value } }),
+            () => this.props.onSetFilter(this.state.filterBy))
+    }
+
     render() {
-        return <div>mail filter</div>
+        const { searchInp } = this.state
+
+        return <div className="mail-filter-box-container">
+            <form>
+                <input type="text" placeholder="Search mail" name="searchInp" value={searchInp} onChange={this.handleChange} />
+            </form>
+        </div>
     }
 }
