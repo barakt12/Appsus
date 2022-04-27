@@ -6,15 +6,14 @@ export function MailPreview({ mail, onToggleMarkMail, onDeleteMail, onToggleRead
 
     return <article className="preview-container">
         <span className={`star ${starClass}`} onClick={() => onToggleMarkMail(id)}>{star}</span>
-        {/* TODO - MAIL_FROM */}
         <span className={`mailAddress ${readingClassName}`}>{to}</span>
         <div className="content">
-            <span className={`subject ${readingClassName}`}>{subject}</span>
+            <span className={`subject ${readingClassName}`}>{`${subject} - `}</span>
             <span className="body">{body}</span>
         </div>
         {/* TODO - FORMAT_DATE */}
         <span>{sentAt}</span>
-        <div onClick={() => onDeleteMail(id)}><img src="./apps/mail/assets/img/delete-icon.png" /></div>
-        <div onClick={() => onToggleReadMail(id)}><img src={`./apps/mail/assets/img/${readingClassName}-mail-icon.png`} /></div>
+        <div onClick={() => onDeleteMail(id)}><img src="apps/mail/assets/img/delete-icon.png" /></div>
+        <div onClick={() => onToggleReadMail(id)}><img src={`apps/mail/assets/img/${readingClassName}-mail-icon.png`} /></div>
     </article>
 }
