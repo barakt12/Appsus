@@ -14,4 +14,12 @@
 @import './cmps/mail/mail-app.css';
 
 /* Apps  */
+<<<<<<< HEAD
 @import './apps/keep/keep-app.css';
+=======
+@import './apps/keep/keep-app.css';
+@import './apps/keep/cmps/note-preview.css';
+@import './apps/keep/cmps/note-list.css';
+@import './apps/keep/cmps/note-add.css';
+@import './apps/keep/cmps/note-img.css';
+>>>>>>> 8b5b207b99dd6ffb1c4af6b9535dc741e848585a

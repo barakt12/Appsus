@@ -1,4 +1,5 @@
 export class MailsFilter extends React.Component {
+<<<<<<< HEAD
     state = {
         filterBy: {
             isRead: '',
@@ -26,3 +27,18 @@ export class MailsFilter extends React.Component {
         </div>
     }
 }
+=======
+  state = {
+    filterBy: {
+      isRead: '',
+      searchInp: '',
+      // isStarred: '',
+      // folder: '', // inbox/sent/drafts/trash
+    },
+  }
+
+  render() {
+    return <div>mail filter</div>
+  }
+}
+>>>>>>> 8b5b207b99dd6ffb1c4af6b9535dc741e848585a

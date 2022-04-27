@@ -1,1 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@font-face {
+  font-family: open-sans;
+  src: url('../../fonts/OpenSans/OpenSans-Regular.ttf');
+}

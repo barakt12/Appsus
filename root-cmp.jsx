@@ -1,5 +1,5 @@
-import { Home } from './pages/app-home.jsx'
-import { About } from './pages/app-about.jsx'
+import { Home } from './pages/home.jsx'
+import { About } from './pages/about.jsx'
 import { BookApp } from './apps/book/pages/book-app.jsx'
 import { KeepApp } from './apps/keep/pages/keep-app.jsx'
 import { MailApp } from './apps/mail/pages/mail-app.jsx'
