@@ -8,7 +8,6 @@ export const noteService = {
   getNoteById,
   createNote,
   updateNoteText,
-  // updateNoteTitle,
 }
 
 function query(filterBy) {
@@ -106,13 +105,6 @@ function updateNoteText(updatedNote, inputText, inputTitle) {
   _saveToStorage(updatedNotes)
   return Promise.resolve()
 }
-
-// function updateNoteTitle(updatedNote, inputTitle) {
-//   updatedNote.info.title = inputTitle
-//   const updatedNotes = updateNote(updatedNote)
-//   _saveToStorage(updatedNotes)
-//   return Promise.resolve()
-// }
 
 function updateNote(updatedNote) {
   const notes = _loadFromStorage()
