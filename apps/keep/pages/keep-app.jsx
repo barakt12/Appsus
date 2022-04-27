@@ -20,12 +20,11 @@ export class KeepApp extends React.Component {
   }
 
   render() {
+    const { notes } = this.state
     return (
       <section className='keep-app'>
-        <div className='note-add'>
-          <NoteAdd />
-          <NoteList />
-        </div>
+        <NoteAdd />
+        <NoteList notes={notes} />
       </section>
     )
   }

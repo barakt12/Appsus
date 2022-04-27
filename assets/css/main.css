@@ -9,3 +9,7 @@
 
 /* Apps  */
 @import './apps/keep/keep-app.css';
+@import './apps/keep/cmps/note-preview.css';
+@import './apps/keep/cmps/note-list.css';
+@import './apps/keep/cmps/note-add.css';
+@import './apps/keep/cmps/note-img.css';

@@ -1,0 +1,11 @@
+.note-img {
+  width: 100%;
+
+  border-radius: 8px;
+  display: flex;
+  background-color: transparent;
+}
+.note-img-container {
+  /* width: 240px; */
+  border-radius: 8px;
+}

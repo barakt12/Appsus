@@ -1,0 +1,10 @@
+.note-list {
+  width: 80%;
+  /* height: 80%; */
+  /* display: flex; */
+  /* flex-wrap: wrap; */
+  /* align-items: flex-start; */
+  column-width: 240px;
+  column-count: auto;
+  gap: 20px;
+}
