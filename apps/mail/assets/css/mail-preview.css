@@ -36,21 +36,34 @@
 }
 
 .preview-container .star.marked {
-    color: yellow;
+    color: gold;
     opacity: unset;
 }
 
-.preview-container .subject {
-    text-overflow: ellipsis;
-    width: 50px;
-    white-space: nowrap;
-    overflow: hidden;
-    font-weight: 700;
-}
-
 .preview-container .content {
-    display: flex;
-    justify-content: flex-start;
     width: 300px;
     overflow: hidden;
+}
+
+.preview-container .subject {
+    overflow: ellipsis;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.preview-container .body {
+    align-self: flex-start;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.preview-container .mailAddress {
+    width: 200px;
+}
+
+.preview-container .mailAddress.unread,
+.preview-container .subject.unread {
+    font-weight: 700;
 }

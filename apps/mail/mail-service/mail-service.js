@@ -3,6 +3,8 @@ import { storageService } from '../../../services/storage.service.js'
 export const mailService = {
     query,
     toggleMarkMail,
+    deleteMail,
+    toggleReadMail
 }
 
 const KEY = 'mailsDB'
@@ -15,7 +17,8 @@ const gMailsToDisplay = [
         isRead: false,
         sentAt: 1551133930594,
         to: 'momo@momo.com',
-        isMarked: true
+        isMarked: true,
+        isTrash: false,
     },
     {
         id: 'e1025',
@@ -25,6 +28,7 @@ const gMailsToDisplay = [
         sentAt: Date.now(),
         to: 'puki@puki.com',
         isMarked: false,
+        isTrash: false,
     },
     {
         id: 'e1035',
@@ -34,6 +38,7 @@ const gMailsToDisplay = [
         sentAt: Date.now(),
         to: 'shuki@shuki.com',
         isMarked: true,
+        isTrash: false,
     },
 ]
 
@@ -60,6 +65,22 @@ function query(filterBy) {
 function toggleMarkMail(mailId) {
     return getMailById(mailId).then(mail => {
         mail.isMarked = !mail.isMarked
+        updateMail(mail)
+        return Promise.resolve(mail)
+    })
+}
+
+function toggleReadMail(mailId) {
+    return getMailById(mailId).then(mail => {
+        mail.isRead = !mail.isRead
+        updateMail(mail)
+        return Promise.resolve(mail)
+    })
+}
+
+function deleteMail(mailId) {
+    return getMailById(mailId).then(mail => {
+        mail.isTrash = true
         updateMail(mail)
         return Promise.resolve(mail)
     })

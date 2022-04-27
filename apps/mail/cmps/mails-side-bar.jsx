@@ -4,6 +4,11 @@ export function MailsSideBar() {
             <span>+</span>
             <span>Compose</span>
         </div>
-        <div></div>
+        <div className="folders-container">
+            <span>Inbox</span>
+            <span>Starred</span>
+            <span>Sent</span>
+            <span>Drafts</span>
+        </div>
     </section>
 }
