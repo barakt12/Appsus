@@ -22,3 +22,5 @@
 @import './apps/keep/cmps/note-list.css';
 @import './apps/keep/cmps/note-add.css';
 @import './apps/keep/cmps/note-img.css';
+@import './apps/keep/cmps/note-video.css';
+@import './apps/keep/cmps/preview-toolbar.css';

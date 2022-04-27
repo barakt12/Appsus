@@ -55,7 +55,7 @@ function _createNotes() {
         title: 'Bobi and Me',
       },
       style: {
-        backgroundColor: '#00d',
+        backgroundColor: 'fff',
       },
     },
     {
@@ -74,7 +74,12 @@ function _createNotes() {
       id: utilService.makeId(),
       type: 'note-video',
       isPinned: false,
-      info: {},
+      info: {
+        videoId: 'AEpZbvtiQFs',
+      },
+      style: {
+        backgroundColor: 'fff',
+      },
     },
   ]
   _saveToStorage(notes)
