@@ -33,8 +33,8 @@ export class NoteText extends React.Component {
     const { noteText, noteTitle } = this.state
     return (
       <div className='note-text-container'>
-        <textarea
-          rows={1}
+        <div
+          contentEditable
           spellCheck='false'
           onChange={this.handleTitleChange}
           onBlur={this.onSaveChange}
@@ -42,16 +42,40 @@ export class NoteText extends React.Component {
           className='note-title'
         >
           {noteTitle}
-        </textarea>
-        <textarea
+        </div>
+        <div
           className='note-text'
           spellCheck='false'
+          contentEditable
           onBlur={this.onSaveChange}
           value={noteText}
           onChange={this.handleTextChange}
-        ></textarea>
+        ></div>
         <PreviewToolbar />
       </div>
     )
   }
+}
+
+{
+  /* <div className='note-text-container'>
+<textarea
+  rows={1}
+  spellCheck='false'
+  onChange={this.handleTitleChange}
+  onBlur={this.onSaveChange}
+  value={noteTitle}
+  className='note-title'
+>
+  {noteTitle}
+</textarea>
+<textarea
+  className='note-text'
+  spellCheck='false'
+  onBlur={this.onSaveChange}
+  value={noteText}
+  onChange={this.handleTextChange}
+></textarea>
+<PreviewToolbar />
+</div> */
 }

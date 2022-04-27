@@ -17,7 +17,7 @@ export class About extends React.Component {
 
   render() {
     return (
-      <section className='about'>
+      <section className='about layout'>
         {/* <nav>
           <NavLink to='/about/team'>Team</NavLink>
           <NavLink to='/about/vision'>Vision</NavLink>

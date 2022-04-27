@@ -1,6 +1,6 @@
 export function Home() {
   return (
-    <section className='home'>
+    <section className='home layout'>
       <h2>Welcome to Appsus!</h2>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero ea velit

@@ -96,6 +96,12 @@
   background-color: unset;
 }
 
+div[contenteditable] {
+  outline: none;
+  width: 200px;
+  overflow-wrap: break-word;
+}
+
 /* note toolbar transition
 transition: background-color 0.218s ease-in-out,box-shadow 0.218s ease-in-out; */
 
