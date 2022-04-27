@@ -1,4 +1,6 @@
 .note-preview {
+  position: relative;
+
   /* float: left; */
   min-height: 100px;
   display: flex;
@@ -13,8 +15,14 @@
   break-inside: avoid-column;
 }
 
+.note-preview:hover .preview-toolbar {
+  opacity: 0.87;
+}
+
 .note-preview > .note-text-container {
-  padding: 20px;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .note-preview .note-img-container {
@@ -52,7 +60,9 @@
   display: flex;
   flex-direction: column;
   /* min-width: 260px; */
-  padding: 20px;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .todos-container ul {

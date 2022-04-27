@@ -1,4 +1,6 @@
 import { noteService } from '../services/note.service.js'
+import { PreviewToolbar } from './preview-toolbar.jsx'
+
 export class NoteText extends React.Component {
   state = {
     noteTitle: '',
@@ -48,6 +50,7 @@ export class NoteText extends React.Component {
           value={noteText}
           onChange={this.handleTextChange}
         ></textarea>
+        <PreviewToolbar />
       </div>
     )
   }

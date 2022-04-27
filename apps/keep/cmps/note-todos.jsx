@@ -1,3 +1,5 @@
+import { PreviewToolbar } from './preview-toolbar.jsx'
+
 export class NoteTodos extends React.Component {
   state = {
     todos: [],
@@ -31,6 +33,7 @@ export class NoteTodos extends React.Component {
             </li>
           ))}
         </ul>
+        <PreviewToolbar />
       </div>
     )
   }

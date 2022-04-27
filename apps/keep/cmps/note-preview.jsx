@@ -31,25 +31,15 @@ export class NotePreview extends React.Component {
           return <NoteVideo {...props} />
       }
     }
-    console.log(note.style.backgroundColor)
     return (
-      <React.Fragment>
-        {noteType !== 'note-img' && (
-          <div
-            className='note-preview'
-            style={{
-              backgroundColor: note.style.backgroundColor,
-            }}
-          >
-            <DynamicCmp note={note} />
-          </div>
-        )}
-        {noteType === 'note-img' && (
-          <div className='note-preview'>
-            <DynamicCmp note={note} />
-          </div>
-        )}
-      </React.Fragment>
+      <div
+        className='note-preview'
+        style={{
+          backgroundColor: note.style.backgroundColor,
+        }}
+      >
+        <DynamicCmp note={note} />
+      </div>
     )
   }
 }
