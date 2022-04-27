@@ -1,0 +1,45 @@
+.preview-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 20px;
+    box-shadow: rgba(100, 121, 143, 0.12) 0px -1px 0px 0px inset;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding: 15px;
+    width: calc(100vw - 16.25rem);
+    font-size: 0.8rem;
+}
+
+.preview-container:hover {
+    color: #202124;
+    box-shadow: inset 1px 0 0 #dadce0, inset -1px 0 0 #dadce0, 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
+}
+
+.preview-container:hover .star {
+    opacity: 0.60;
+}
+
+.preview-container .star {
+    font-size: 25px;
+    opacity: 0.20;
+    cursor: pointer;
+}
+
+.preview-container .star:hover {
+    opacity: unset;
+}
+
+.preview-container .star.marked::before {
+    color: yellow;
+    content: '&#9733;'
+
+}
+
+.preview-container .subject {
+    text-overflow: ellipsis;
+    width: 50px;
+    white-space: nowrap;
+    overflow: hidden;
+    font-weight: 700;
+}

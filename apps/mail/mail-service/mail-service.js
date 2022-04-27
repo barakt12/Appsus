@@ -1,3 +1,11 @@
+import { storageService } from '../../../services/storage.service.js'
+
+export const mailService = {
+    query,
+}
+
+const KEY = 'mailsDB'
+
 const gMailsToDisplay = [
     {
         id: 'e1015',
@@ -15,7 +23,14 @@ const gMailsToDisplay = [
         sentAt: Date.now(),
         to: 'puki@puki.com'
     },
-
+    {
+        id: 'e1035',
+        subject: 'Something Longggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
+        body: 'Something Long',
+        isRead: true,
+        sentAt: Date.now(),
+        to: 'shuki@shuki.com'
+    },
 ]
 
 function query(filterBy) {
@@ -36,4 +51,12 @@ function query(filterBy) {
     }
 
     return Promise.resolve(mails)
+}
+
+function _saveToStorage(mails) {
+    storageService.saveToStorage(KEY, mails)
+}
+
+function _loadFromStorage() {
+    return storageService.loadFromStorage(KEY)
 }
