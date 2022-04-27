@@ -25,12 +25,19 @@ export class MailApp extends React.Component {
         })
     }
 
+    onToggleMarkMail = (mailId) => {
+        const { filterBy } = this.state
+        mailService.toggleMarkMail(mailId).then()
+            .then(() => mailService.query(filterBy)
+                .then(mails => this.setState({ mails })))
+    }
+
     render() {
         return <section>
             <MailHeader onSetFilter={this.onSetFilter} />
             <main className="main-mail-container">
                 <MailsSideBar />
-                <MailsList mails={this.state.mails} />
+                <MailsList mails={this.state.mails} onToggleMarkMail={this.onToggleMarkMail} />
             </main>
         </section>
     }

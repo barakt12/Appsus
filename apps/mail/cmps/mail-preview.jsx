@@ -1,15 +1,20 @@
-export function MailPreview({ mail }) {
-    console.log(mail)
+export function MailPreview({ mail, onToggleMarkMail }) {
+    const { to, subject, sentAt, body, isMarked, isRead, id } = mail
+    const star = isMarked ? '★' : '☆'
+    const starClass = isMarked ? 'marked' : ''
+    const readImgSrc = isRead ? 'unread' : 'read'
 
-    const { to, subject, sentAt, body } = mail
     return <article className="preview-container">
-        {/* FULL_STAR-9733 */}
-        <span className="star">&#9734;</span>
+        <span className={`star ${starClass}`} onClick={() => onToggleMarkMail(id)}>{star}</span>
         {/* TODO - MAIL_FROM */}
         <span>{to}</span>
-        <span className="subject">{subject}</span>
-        <span className="body">{body}</span>
-        {/* TODO - FORMATED_DATE */}
+        <div className="content">
+            <span className="subject">{subject}</span>
+            <span className="body">{body}</span>
+        </div>
+        {/* TODO - FORMAT_DATE */}
         <span>{sentAt}</span>
+        <div><img src="./apps/mail/assets/img/delete-icon.png" /></div>
+        <div><img src={`./apps/mail/assets/img/${readImgSrc}-mail-icon.png`} /></div>
     </article>
 }

@@ -2,6 +2,7 @@ import { storageService } from '../../../services/storage.service.js'
 
 export const mailService = {
     query,
+    toggleMarkMail,
 }
 
 const KEY = 'mailsDB'
@@ -13,7 +14,8 @@ const gMailsToDisplay = [
         body: 'Would love to catch up sometimes',
         isRead: false,
         sentAt: 1551133930594,
-        to: 'momo@momo.com'
+        to: 'momo@momo.com',
+        isMarked: true
     },
     {
         id: 'e1025',
@@ -21,7 +23,8 @@ const gMailsToDisplay = [
         body: 'love you babe',
         isRead: true,
         sentAt: Date.now(),
-        to: 'puki@puki.com'
+        to: 'puki@puki.com',
+        isMarked: false,
     },
     {
         id: 'e1035',
@@ -29,7 +32,8 @@ const gMailsToDisplay = [
         body: 'Something Long',
         isRead: true,
         sentAt: Date.now(),
-        to: 'shuki@shuki.com'
+        to: 'shuki@shuki.com',
+        isMarked: true,
     },
 ]
 
@@ -52,6 +56,30 @@ function query(filterBy) {
 
     return Promise.resolve(mails)
 }
+
+function toggleMarkMail(mailId) {
+    return getMailById(mailId).then(mail => {
+        mail.isMarked = !mail.isMarked
+        updateMail(mail)
+        return Promise.resolve(mail)
+    })
+}
+
+function updateMail(currMail) {
+    query().then(mails => mails.map(mail => {
+        if (currMail.id === mail.id) return currMail
+        return mail
+    })).then(mails => {
+        _saveToStorage(mails)
+    })
+}
+
+function getMailById(mailId) {
+    const mails = _loadFromStorage() || gMailsToDisplay
+    const mail = mails.find(mail => mail.id === mailId)
+    return Promise.resolve(mail)
+}
+
 
 function _saveToStorage(mails) {
     storageService.saveToStorage(KEY, mails)
