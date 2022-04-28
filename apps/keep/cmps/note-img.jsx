@@ -18,7 +18,10 @@ export class NoteImg extends React.Component {
         />
         <div className='note-img-description'>
           {title && <h4>{title}</h4>}
-          <PreviewToolbar />
+          <PreviewToolbar
+            noteId={this.props.note.id}
+            onChangeNoteColor={this.props.onChangeNoteColor}
+          />
         </div>
       </div>
     )

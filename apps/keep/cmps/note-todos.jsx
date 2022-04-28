@@ -33,7 +33,10 @@ export class NoteTodos extends React.Component {
             </li>
           ))}
         </ul>
-        <PreviewToolbar />
+        <PreviewToolbar
+          noteId={this.props.note.id}
+          onChangeNoteColor={this.props.onChangeNoteColor}
+        />
       </div>
     )
   }

@@ -8,6 +8,7 @@
 @import './cmps/app-header.css';
 @import './cmps/home.css';
 @import './cmps/about.css';
+@import './cmps/screen.css';
 
 /* Mail */
 @import '../../apps/mail/assets/css/compose-mail-box.css';

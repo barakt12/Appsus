@@ -1,6 +1,5 @@
 .note-preview {
   position: relative;
-
   /* float: left; */
   min-height: 100px;
   display: flex;
@@ -17,6 +16,10 @@
 
 .note-preview:hover .preview-toolbar {
   opacity: 0.87;
+}
+
+.note-preview .note-video-container {
+  width: 350px;
 }
 
 .note-preview > .note-text-container {
@@ -96,10 +99,13 @@
   background-color: unset;
 }
 
-div[contenteditable] {
+textarea {
   outline: none;
-  width: 200px;
-  overflow-wrap: break-word;
+  /* height: auto; */
+  overflow: hidden;
+  width: auto;
+  /* width: 150px; */
+  /* overflow-wrap: break-word; */
 }
 
 /* note toolbar transition

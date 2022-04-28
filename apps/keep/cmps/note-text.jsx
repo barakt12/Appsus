@@ -29,53 +29,40 @@ export class NoteText extends React.Component {
     noteService.updateNoteText(note, noteText, noteTitle)
   }
 
+  onResize = ({ target }) => {
+    target.style.height = 'inherit'
+    target.style.height = `${target.scrollHeight}px`
+  }
+
   render() {
     const { noteText, noteTitle } = this.state
     return (
       <div className='note-text-container'>
-        <div
-          contentEditable
-          spellCheck='false'
-          onChange={this.handleTitleChange}
-          onBlur={this.onSaveChange}
-          value={noteTitle}
-          className='note-title'
-        >
-          {noteTitle}
-        </div>
-        <div
+        {noteTitle && (
+          <textarea
+            rows={1}
+            spellCheck='false'
+            onChange={this.handleTitleChange}
+            onBlur={this.onSaveChange}
+            value={noteTitle}
+            className='note-title'
+          >
+            {noteTitle}
+          </textarea>
+        )}
+        <textarea
           className='note-text'
+          onInput={this.onResize}
           spellCheck='false'
-          contentEditable
           onBlur={this.onSaveChange}
           value={noteText}
           onChange={this.handleTextChange}
-        ></div>
-        <PreviewToolbar />
+        ></textarea>
+        <PreviewToolbar
+          noteId={this.props.note.id}
+          onChangeNoteColor={this.props.onChangeNoteColor}
+        />
       </div>
     )
   }
-}
-
-{
-  /* <div className='note-text-container'>
-<textarea
-  rows={1}
-  spellCheck='false'
-  onChange={this.handleTitleChange}
-  onBlur={this.onSaveChange}
-  value={noteTitle}
-  className='note-title'
->
-  {noteTitle}
-</textarea>
-<textarea
-  className='note-text'
-  spellCheck='false'
-  onBlur={this.onSaveChange}
-  value={noteText}
-  onChange={this.handleTextChange}
-></textarea>
-<PreviewToolbar />
-</div> */
 }
