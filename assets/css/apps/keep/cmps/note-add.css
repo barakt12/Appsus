@@ -1,12 +1,13 @@
 .note-add {
   width: 598px;
-  height: 46px;
   z-index: 10;
-  /* border: solid transparent; */
+  border: 1px solid transparent;
   border-radius: 8px;
   box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
-  margin: 20px;
+  /* margin: 20px; */
   margin: 32px auto 16px auto;
+  background-color: #fff;
+  position: relative;
 }
 
 .note-add-title.hide {
@@ -14,21 +15,19 @@
 }
 
 .note-add form {
-  /* border: solid transparent; */
   border-radius: 8px;
   border: none;
-  height: 100%;
-  width: 100%;
+
   outline: none;
+  position: relative;
 }
 
 .note-add form input {
   outline: none;
   padding: 12px 16px 12px 16px;
   width: 100%;
-  border: none;
   font-size: 14px;
-  /* border: solid transparent; */
+  border: solid transparent;
   letter-spacing: 0.2px;
   height: 100%;
 }
@@ -39,6 +38,48 @@
 }
 
 .note-add form input:nth-child(2) {
+  border-radius: 8px;
+}
+
+.form-actions {
+  height: 30px;
+  /* width: 598px; */
+  width: auto;
+  background-color: white;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
+}
+.note-create-btn {
+  cursor: pointer;
+  background-color: unset;
+  outline: none;
+  border: none;
+  position: absolute;
+  bottom: 0;
+  margin-right: 15px;
+  width: 86px;
+  height: 36px;
+  right: 0;
+  margin-bottom: 4px;
+  border-radius: 4px;
+}
+
+.note-create-btn:hover {
+  background-color: rgba(95, 99, 104, 0.039);
+}
+
+.type-btns {
+  display: flex;
+  justify-content: space-between;
+  width: 150px;
+  right: 20px;
+  top: 15px;
+  position: absolute;
+}
+
+.type-btns > * {
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: unset;
 }

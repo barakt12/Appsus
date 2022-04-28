@@ -135,6 +135,10 @@ function addNote(note) {
       break
     case 'note-todos':
       if (!noteInfo.todos.length) return
+      noteInfo.todos = noteInfo.todos
+        .filter((todo) => todo.length >= 1)
+        .map((todo) => ({ txt: todo }))
+      console.log(noteInfo.todos)
       break
   }
   const newNote = {
