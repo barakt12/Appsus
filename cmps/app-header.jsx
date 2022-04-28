@@ -20,7 +20,7 @@ class _AppHeader extends React.Component {
         </Link>
 
         <a className='menu' onClick={this.onToggleMenu}>
-          <img src='../assets/img/menu.svg' />
+          <img src='./assets/img/menu.svg' />
         </a>
         <nav className=''>
           {isOpen && (

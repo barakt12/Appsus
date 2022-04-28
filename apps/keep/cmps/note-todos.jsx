@@ -6,7 +6,6 @@ export class NoteTodos extends React.Component {
   }
 
   componentDidMount() {
-    const { note } = this.props
     const { todos } = this.props.note.info
     this.setState({ todos })
   }
@@ -24,7 +23,9 @@ export class NoteTodos extends React.Component {
     const { note } = this.props
     return (
       <div className='todos-container'>
-        <div className='todos-title'>{note.info.title}</div>
+        {note.info.title && (
+          <div className='todos-title'>{note.info.title}</div>
+        )}
         <ul>
           {todos.map((todo, idx) => (
             <li key={idx}>

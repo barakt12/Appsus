@@ -1,6 +1,7 @@
 import { eventBusService } from '../../../services/event-bus.service.js'
-import { utilService } from '../../../services/util.service.js'
 import { noteService } from '../services/note.service.js'
+import { NoteTypeBtns } from './note-type-btns.jsx'
+import { CreateTodo } from './create-todo.jsx'
 
 export class NoteAdd extends React.Component {
   state = {
@@ -14,6 +15,8 @@ export class NoteAdd extends React.Component {
     },
   }
 
+  inputRef = React.createRef()
+
   handleChange = ({ target }) => {
     const value = target.value
     const field = target.name
@@ -26,6 +29,7 @@ export class NoteAdd extends React.Component {
   onAddNote = (ev) => {
     ev.preventDefault()
     const note = this.state
+    console.log(note)
     noteService
       .addNote(note)
       .then(
@@ -41,32 +45,36 @@ export class NoteAdd extends React.Component {
         })
       )
       .then(this.props.loadNotes())
+      .then(this.onExpandInput(false))
   }
 
-  onExpandInput = (ev) => {
-    // ev.stopPropagation()
-    this.setState({ isActive: true }, () => {
-      eventBusService.emit('toggleScreen', true)
+  onExpandInput = (ev, isOpen) => {
+    if (ev.relatedTarget) return
+
+    this.setState({ isActive: isOpen }, () => {
+      eventBusService.emit('toggleScreen', isOpen)
     })
   }
 
   onChangeType = (ev) => {
     ev.preventDefault()
-    ev.stopPropagation()
+    this.onExpandInput(ev, true)
     const value = ev.target.value
+
     this.setState((prevState) => ({ ...prevState, noteType: value }))
+    // this.inputRef.current.focus()
   }
 
   render() {
     const { txt, title, url } = this.state.noteInfo
-    const { isActive } = this.state
+    const { isActive, noteType } = this.state
     return (
       <div className='note-add'>
         <form
           onSubmit={this.onAddNote}
-          // onBlur={() => {
-          //   this.setState({ isActive: false })
-          // }}
+          onBlur={(ev) => {
+            this.onExpandInput(ev, false)
+          }}
         >
           <input
             className={`note-add-title ${isActive ? '' : 'hide'}`}
@@ -78,38 +86,52 @@ export class NoteAdd extends React.Component {
             onChange={this.handleChange}
           />
 
-          <input
-            name='txt'
-            autoComplete='off'
-            onFocus={this.onExpandInput}
-            type='text'
-            placeholder='Take a note...'
-            value={txt}
-            onChange={this.handleChange}
-          />
+          {noteType === 'note-txt' && (
+            <input
+              name='txt'
+              autoComplete='off'
+              type='text'
+              placeholder='Take a note...'
+              value={txt}
+              onFocus={(ev) => this.onExpandInput(ev, true)}
+              onChange={this.handleChange}
+              ref={this.inputRef}
+            />
+          )}
+          {noteType === 'note-img' && (
+            <input
+              name='url'
+              autoComplete='off'
+              type='text'
+              placeholder='Enter Image URL'
+              value={url}
+              onFocus={(ev) => this.onExpandInput(ev, true)}
+              onChange={this.handleChange}
+              ref={this.inputRef}
+            />
+          )}
+          {noteType === 'note-todos' && (
+            <CreateTodo handleChange={this.handleChange} />
+          )}
+          {noteType === 'note-video' && (
+            <input
+              name='txt'
+              autoComplete='off'
+              type='text'
+              placeholder='Enter Video URL'
+              value={url}
+              onFocus={(ev) => this.onExpandInput(ev, true)}
+              onChange={this.handleChange}
+              ref={this.inputRef}
+            />
+          )}
+          {isActive && (
+            <div className='form-actions'>
+              <button className='note-create-btn'>Create</button>
+            </div>
+          )}
         </form>
-        {/* <div className='type-btns'>
-          <button
-            className='btn-text fa-solid fa-font'
-            value='note-txt'
-            onClick={this.onChangeType}
-          ></button>
-          <button
-            className='btn-img fa-solid fa-image'
-            value='note-img'
-            onClick={this.onChangeType}
-          ></button>
-          <button
-            className='btn-todos fa-solid fa-list'
-            value='note-todos'
-            onClick={this.onChangeType}
-          ></button>
-          <button
-            className='btn-video fa-brands fa-youtube'
-            value='note-video'
-            onClick={this.onChangeType}
-          ></button>
-        </div> */}
+        <NoteTypeBtns onChangeType={this.onChangeType} />
       </div>
     )
   }
