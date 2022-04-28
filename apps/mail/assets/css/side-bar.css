@@ -10,7 +10,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    top: 1rem;
+    top: 0;
     left: 0.5rem;
     right: 6.4375rem;
     width: 7.5rem;
@@ -27,11 +27,67 @@
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 4.6875rem;
-    left: 1.625rem;
+    top: 3.6875rem;
+    left: 0;
+    width: 100%;
 }
 
 .side-bar .folders-container>* {
     width: 12.625rem;
     height: 2rem;
 }
+
+.side-bar .folder {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    padding-left: 1.625rem;
+    width: 100%;
+    cursor: pointer;
+}
+
+.side-bar .inbox-folder.active {
+    background-color: #fce8e6;
+    border-start-end-radius: 25px;
+    border-end-end-radius: 25px;
+    padding-right: 1rem;
+}
+
+.side-bar .content {
+    color: #202124;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    font-size: 0.875rem;
+    text-align: left;
+}
+
+.side-bar .folders-container .content.inbox-content.active {
+    color: #d93025;
+}
+
+.side-bar .folder.active:not(.inbox-folder) {
+    background-color: #e8eaed;
+    border-start-end-radius: 25px;
+    border-end-end-radius: 25px;
+    padding-right: 1rem;
+}
+
+.side-bar .folder:hover:not(.active) {
+    background-color: #e8eaed94;
+    border-start-end-radius: 25px;
+    border-end-end-radius: 25px;
+    padding-right: 1rem;
+}
+
+.side-bar .amount {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.side-bar .side-img {
+    object-fit: contain;
+}
+
+
+.side-bar {}
