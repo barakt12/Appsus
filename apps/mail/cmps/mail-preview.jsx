@@ -3,14 +3,14 @@ export function MailPreview({ props, mail }) {
     const { to, subject, sentAt, body, isMarked, isRead, id } = mail
     const star = isMarked ? '★' : '☆'
     const starClass = isMarked ? 'marked' : ''
-    const readingClassName = isRead ? 'unread' : 'read'
+    const readingClassName = isRead ? 'read' : 'unread'
     const isActiveMailClassName = activeMail === id ? 'active' : ''
 
     return <article className={`preview-container ${isActiveMailClassName}`} onClick={() => onSetActiveMail(id)}>
         <span className={`star ${starClass}`} onClick={(ev) => onToggleMarkMail(ev, id)}>{star}</span>
         <span className={`mailAddress ${readingClassName}`}>{to}</span>
         <div className="content">
-            <span className={`subject ${readingClassName} ${isActiveMailClassName}`}>{`${subject} - `}</span>
+            <span className={`subject ${readingClassName} ${isActiveMailClassName}`}>{`${subject}`}</span>
             <span className={`body ${isActiveMailClassName}`}>{body}</span>
         </div>
         {/* TODO - FORMAT_DATE */}

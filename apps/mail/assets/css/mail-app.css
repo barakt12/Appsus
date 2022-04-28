@@ -1,3 +1,4 @@
 .main-mail-container {
     display: flex;
+    height: fit-content;
 }

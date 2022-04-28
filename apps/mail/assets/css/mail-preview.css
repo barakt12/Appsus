@@ -53,6 +53,10 @@
     overflow: hidden;
 }
 
+.preview-container .subject:not(.active)::after {
+    content: " - ";
+}
+
 .preview-container .body {
     align-self: flex-start;
     text-overflow: ellipsis;

@@ -21,7 +21,7 @@ export function App() {
           <Route path='/' component={Home} />
         </Switch>
       </section>
-      <AppFooter />
+      {/* <AppFooter /> */}
     </Router>
   )
 }

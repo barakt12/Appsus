@@ -1,7 +1,6 @@
 .side-bar {
     width: 16.25rem;
-    /* //TODO */
-    height: 99vh;
+    height: fit-content;
     position: relative;
 }
 

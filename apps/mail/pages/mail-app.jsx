@@ -46,15 +46,16 @@ export class MailApp extends React.Component {
     getMailsToDisplay = (mails) => {
         let { folder } = this.state
         if (!folder) folder = 'inbox'
+        const loggedInUserMail = mailService.getLoggedInUserMail()
         switch (folder) {
             case 'inbox':
-                mails = mails.filter(mail => (!mail.sentAt && !mail.isTrash));
+                mails = mails.filter(mail => (mail.to.toLowerCase() === loggedInUserMail && !mail.isTrash));
                 break;
             case 'starred':
                 mails = mails.filter(mail => (mail.isMarked && !mail.isTrash));
                 break;
             case 'sent':
-                mails = mails.filter(mail => (mail.sentAt && !mail.isTrash));
+                mails = mails.filter(mail => (mail.to.toLowerCase() !== loggedInUserMail && !mail.isTrash && !mail.isDraft));
                 break;
             case 'trash':
                 mails = mails.filter(mail => (mail.isTrash));

@@ -4,10 +4,18 @@ export const mailService = {
     query,
     toggleMarkMail,
     deleteMail,
-    toggleReadMail
+    toggleReadMail,
+    addDraftMail,
+    autoSaveDraft,
+    getLoggedInUserMail,
+    sendMail,
 }
 
 const KEY = 'mailsDB'
+
+const gLoggedInUser = {
+    email: 'user@appsus.com',
+}
 
 const gMailsToDisplay = [
     {
@@ -15,10 +23,11 @@ const gMailsToDisplay = [
         subject: 'Miss you!',
         body: 'Would love to catch up sometimes',
         isRead: false,
-        sentAt: '',
-        to: 'momo@momo.com',
+        sentAt: Date.now(),
+        to: 'user@appsus.com',
         isMarked: true,
         isTrash: false,
+        isDraft: false,
     },
     {
         id: 'e1025',
@@ -29,6 +38,7 @@ const gMailsToDisplay = [
         to: 'puki@puki.com',
         isMarked: false,
         isTrash: false,
+        isDraft: false,
     },
     {
         id: 'e1035',
@@ -39,14 +49,43 @@ const gMailsToDisplay = [
         to: 'shuki@shuki.com',
         isMarked: true,
         isTrash: false,
+        isDraft: false,
     },
 ]
 
+function addDraftMail(draft) {
+    let mails = _loadMailsFromStorage() || gMailsToDisplay
+    mails.unshift(_createDraft(draft))
+    _saveMailsToStorage(mails)
+}
+
+function autoSaveDraft(newDraft) {
+    getMailById(newDraft.id).then(draft => {
+        draft.subject = newDraft.subject || ''
+        draft.body = newDraft.body || ''
+        draft.sentAt = newDraft.sentAt || ''
+        draft.to = newDraft.to || ''
+        updateMail(draft)
+    })
+}
+
+function sendMail(newMail) {
+    if (!newMail.to) return
+    getMailById(newMail.id).then(mail => {
+        mail.subject = newMail.subject || ''
+        mail.body = newMail.body || ''
+        mail.sentAt = newMail.sentAt || ''
+        mail.to = newMail.to || ''
+        mail.isDraft = false
+        updateMail(mail)
+    })
+}
+
 function query(filterBy) {
-    let mails = _loadFromStorage() || gMailsToDisplay
+    let mails = _loadMailsFromStorage() || gMailsToDisplay
     if (!mails || !mails.length) {
         mails = gMailsToDisplay
-        _saveToStorage(mails)
+        _saveMailsToStorage(mails)
     }
 
     if (filterBy) {
@@ -71,9 +110,13 @@ function toggleMarkMail(mailId) {
 }
 
 function toggleReadMail(mailId, isRead) {
+    console.log('id-from-read-mail', mailId, isRead)
     return getMailById(mailId).then(mail => {
-        if (isRead) mail.isRead = true
-        else mail.isRead = !mail.isRead
+        if (isRead) {
+            mail.isRead = true
+            console.log(mail)
+        }
+        else { mail.isRead = !mail.isRead }
         updateMail(mail)
         return Promise.resolve(mail)
     })
@@ -86,9 +129,9 @@ function deleteMail(mailId) {
             updateMail(mail)
             return Promise.resolve(mail)
         } else {
-            let mails = _loadFromStorage() || gMailsToDisplay
+            let mails = _loadMailsFromStorage() || gMailsToDisplay
             mails = mails.filter(mail => mail.id !== mailId)
-            _saveToStorage(mails)
+            _saveMailsToStorage(mails)
             return Promise.resolve(mails)
         }
     })
@@ -99,21 +142,39 @@ function updateMail(currMail) {
         if (currMail.id === mail.id) return currMail
         return mail
     })).then(mails => {
-        _saveToStorage(mails)
+        _saveMailsToStorage(mails)
     })
 }
 
 function getMailById(mailId) {
-    const mails = _loadFromStorage() || gMailsToDisplay
+    const mails = _loadMailsFromStorage() || gMailsToDisplay
     const mail = mails.find(mail => mail.id === mailId)
     return Promise.resolve(mail)
 }
 
+function getLoggedInUserMail() {
+    return gLoggedInUser.email
+}
 
-function _saveToStorage(mails) {
+
+function _saveMailsToStorage(mails) {
     storageService.saveToStorage(KEY, mails)
 }
 
-function _loadFromStorage() {
+function _loadMailsFromStorage() {
     return storageService.loadFromStorage(KEY)
+}
+
+function _createDraft(draft) {
+    return {
+        id: draft.id,
+        subject: draft.subject || '',
+        body: draft.body || '',
+        isRead: false,
+        sentAt: Date.now(), // TODO - editAt
+        to: draft.to || '',
+        isMarked: false,
+        isTrash: false,
+        isDraft: true,
+    }
 }
