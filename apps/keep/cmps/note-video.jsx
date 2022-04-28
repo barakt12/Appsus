@@ -1,7 +1,8 @@
 import { PreviewToolbar } from './preview-toolbar.jsx'
 
-export function NoteVideo({ note }) {
-  const { videoId } = note.info
+export function NoteVideo(props) {
+  const { videoId } = props.note.info
+  const { note, onChangeNoteColor } = props
   return (
     <div className='note-video-container'>
       <iframe
@@ -10,8 +11,11 @@ export function NoteVideo({ note }) {
         src={`https://www.youtube.com/embed/${videoId}`}
       ></iframe>
       <div className='note-img-description'>
-        {note.info.title && <h4>{note.info.title}</h4>}
-        <PreviewToolbar />
+        {props.note.info.title && <h4>{props.note.info.title}</h4>}
+        <PreviewToolbar
+          noteId={note.id}
+          onChangeNoteColor={onChangeNoteColor}
+        />
       </div>
     </div>
   )

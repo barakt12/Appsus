@@ -8,6 +8,9 @@ export const noteService = {
   getNoteById,
   createNote,
   updateNoteText,
+  addNote,
+  deleteNote,
+  changeNoteColor,
 }
 
 function query(filterBy) {
@@ -105,7 +108,6 @@ function createNote(type, info) {
 function updateNoteText(updatedNote, inputText, inputTitle) {
   updatedNote.info.txt = inputText
   updatedNote.info.title = inputTitle
-  console.log(updatedNote)
   const updatedNotes = updateNote(updatedNote)
   _saveToStorage(updatedNotes)
   return Promise.resolve()
@@ -117,4 +119,51 @@ function updateNote(updatedNote) {
     if (note.id === updatedNote.id) return updatedNote
     return note
   })
+}
+
+function addNote(note) {
+  const { noteInfo, noteType } = note
+  switch (noteType) {
+    case 'note-txt':
+      if (!noteInfo.txt && !noteInfo.title) return
+      break
+    case 'note-img':
+      if (!noteInfo.url) return
+      break
+    case 'note-video':
+      if (!noteInfo.url) return
+      break
+    case 'note-todos':
+      if (!noteInfo.todos.length) return
+      break
+  }
+  const newNote = {
+    id: utilService.makeId(),
+    type: noteType,
+    isPinned: false,
+    info: { ...noteInfo },
+    style: {
+      backgroundColor: 'fff',
+    },
+  }
+  const notes = _loadFromStorage()
+  notes.unshift(newNote)
+  _saveToStorage(notes)
+  return Promise.resolve(newNote)
+}
+
+function changeNoteColor(noteId, color) {
+  const notes = _loadFromStorage()
+  const note = notes.find((note) => note.id === noteId)
+  note.style.backgroundColor = color
+  _saveToStorage(notes)
+  return Promise.resolve()
+}
+
+function deleteNote(noteId) {
+  const notes = _loadFromStorage()
+  const idx = notes.findIndex((note) => note.id === noteId)
+  notes.splice(idx, 1)
+  _saveToStorage(notes)
+  return Promise.resolve(notes)
 }
