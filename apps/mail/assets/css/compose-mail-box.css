@@ -1,0 +1,89 @@
+.compose-box-container {
+    height: 400px;
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    border-start-end-radius: 18px;
+    border-start-start-radius: 18px;
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.288);
+    position: fixed;
+    bottom: 0;
+    right: 30px;
+    background-color: white;
+}
+
+.compose-box-container>*>* {
+    font-size: 0.875rem;
+}
+
+.compose-box-container .compose-title {
+    height: 40px;
+    border-start-end-radius: 18px;
+    border-start-start-radius: 18px;
+    background-color: #404040;
+    color: rgb(184, 184, 184);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.compose-box-container .close-compose-btn {
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.compose-box-container span:first-child {
+    color: white;
+}
+
+.compose-box-container .compose-to,
+.compose-box-container .compose-subject {
+    height: 30px;
+    width: 96%;
+    align-self: center;
+    border-bottom: .5px solid rgba(128, 128, 128, 0.589);
+}
+
+.compose-box-container:not(.compose-content) textarea {
+    width: 100%;
+}
+
+.compose-box-container .compose-content {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.compose-box-container .compose-content textarea {
+    width: 90%;
+    height: 95%;
+}
+
+.compose-box-container .compose-tools {
+    height: 50px;
+    justify-self: flex-end;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-top: .5px solid rgba(128, 128, 128, 0.288);
+}
+
+.compose-tools>* {
+    height: fit-content;
+}
+
+.compose-tools button {
+    background-color: #5094ed;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    height: 2.2rem;
+    width: fit-content;
+    cursor: pointer;
+    padding: 13px;
+    display: flex;
+    align-items: center;
+}

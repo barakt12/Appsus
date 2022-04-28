@@ -21,6 +21,7 @@
     font-size: 0.875rem;
     color: #202124;
     letter-spacing: 0.25px;
+    cursor: pointer;
 }
 
 .side-bar .folders-container {

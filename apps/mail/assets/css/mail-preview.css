@@ -9,6 +9,7 @@
     padding: 15px;
     width: calc(100vw - 16.25rem);
     font-size: 0.8rem;
+    cursor: pointer;
 }
 
 .preview-container:hover {
@@ -66,4 +67,82 @@
 .preview-container .mailAddress.unread,
 .preview-container .subject.unread {
     font-weight: 700;
+}
+
+.preview-container .trash-container,
+.preview-container .reading-container {
+    cursor: pointer;
+}
+
+/* //ACTIVE MAIL */
+
+.preview-container.active {
+    border: 1px solid rgba(128, 128, 128, 0.205);
+    height: 200px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.preview-container.active .trash-container,
+.preview-container.active .star {
+    position: absolute;
+    top: 5px;
+}
+
+.preview-container.active .star {
+    left: 10px;
+    height: 20px;
+    width: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.preview-container.active .trash-container {
+    left: 40px
+}
+
+.preview-container.active .reading-container {
+    display: none;
+}
+
+.preview-container.active .subject,
+.preview-container.active .mail-date,
+.preview-container.active .mailAddress,
+.preview-container.active .body {
+    display: flex;
+    justify-content: center;
+}
+
+
+.preview-container.active .subject:before {
+    content: 'Subject:';
+    margin-right: 30px;
+    font-weight: 700;
+}
+
+.preview-container.active .subject {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    top: 10px;
+}
+
+.preview-container.active .mail-date {
+    position: absolute;
+    top: 58px;
+}
+
+.preview-container.active .mailAddress {
+    position: absolute;
+    top: 35px;
+}
+
+.preview-container.active .body {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    top: 100px;
 }

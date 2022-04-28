@@ -1,10 +1,8 @@
 export class MailsFilter extends React.Component {
   state = {
     filterBy: {
-      isRead: '',
+      isRead: '', // TODO
       searchInp: '',
-      // isStarred: '',
-      // folder: '', // inbox/sent/drafts/trash
     },
   }
 

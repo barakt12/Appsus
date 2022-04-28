@@ -15,7 +15,7 @@ const gMailsToDisplay = [
         subject: 'Miss you!',
         body: 'Would love to catch up sometimes',
         isRead: false,
-        sentAt: 1551133930594,
+        sentAt: '',
         to: 'momo@momo.com',
         isMarked: true,
         isTrash: false,
@@ -45,7 +45,7 @@ const gMailsToDisplay = [
 function query(filterBy) {
     let mails = _loadFromStorage() || gMailsToDisplay
     if (!mails || !mails.length) {
-        mails = gDefaultBooks
+        mails = gMailsToDisplay
         _saveToStorage(mails)
     }
 
@@ -70,9 +70,10 @@ function toggleMarkMail(mailId) {
     })
 }
 
-function toggleReadMail(mailId) {
+function toggleReadMail(mailId, isRead) {
     return getMailById(mailId).then(mail => {
-        mail.isRead = !mail.isRead
+        if (isRead) mail.isRead = true
+        else mail.isRead = !mail.isRead
         updateMail(mail)
         return Promise.resolve(mail)
     })
@@ -80,9 +81,16 @@ function toggleReadMail(mailId) {
 
 function deleteMail(mailId) {
     return getMailById(mailId).then(mail => {
-        mail.isTrash = true
-        updateMail(mail)
-        return Promise.resolve(mail)
+        if (!mail.isTrash) {
+            mail.isTrash = true
+            updateMail(mail)
+            return Promise.resolve(mail)
+        } else {
+            let mails = _loadFromStorage() || gMailsToDisplay
+            mails = mails.filter(mail => mail.id !== mailId)
+            _saveToStorage(mails)
+            return Promise.resolve(mails)
+        }
     })
 }
 

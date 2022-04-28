@@ -10,11 +10,12 @@
 @import './cmps/about.css';
 
 /* Mail */
-@import '../../apps/mail/assets/css/mail-header.css';
-@import '../../apps/mail/assets/css/mails-list.css';
+@import '../../apps/mail/assets/css/compose-mail-box.css';
 @import '../../apps/mail/assets/css/mail-preview.css';
+@import '../../apps/mail/assets/css/mails-list.css';
 @import '../../apps/mail/assets/css/side-bar.css';
 @import '../../apps/mail/assets/css/mails-filter.css';
+@import '../../apps/mail/assets/css/mail-header.css';
 @import '../../apps/mail/assets/css/mail-app.css';
 
 /* Apps  */

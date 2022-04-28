@@ -2,11 +2,15 @@ import { mailService } from '../mail-service/mail-service.js'
 import { MailHeader } from '../cmps/mail-header.jsx'
 import { MailsSideBar } from '../cmps/mails-side-bar.jsx'
 import { MailsList } from '../cmps/mails-list.jsx'
+import { ComposeMailBox } from '../cmps/compose-mail-box.jsx'
 
 export class MailApp extends React.Component {
     state = {
         mails: null,
         filterBy: null,
+        folder: 'inbox', // inbox/starred/sent/trash/drafts
+        activeMail: '',
+        isComposedBoxOpen: false,
     }
 
     componentDidMount() {
@@ -16,42 +20,92 @@ export class MailApp extends React.Component {
     loadMails = () => {
         const { filterBy } = this.state
         mailService.query(filterBy)
+            .then(mails => this.getMailsToDisplay(mails))
             .then(mails => this.setState({ mails }))
     }
 
     onSetFilter = (filterBy) => {
-        this.setState({ filterBy }, () => {
-            this.loadMails()
-        })
+        this.setState({ filterBy }, this.loadMails())
     }
 
-    onToggleMarkMail = (mailId) => {
-        const { filterBy } = this.state
-        mailService.toggleMarkMail(mailId).then()
-            .then(() => mailService.query(filterBy)
-                .then(mails => this.setState({ mails })))
+    onSetFolder = (folder) => {
+        this.setState({ folder }, this.loadMails())
     }
 
-    onToggleReadMail = (mailId) => {
-        const { filterBy } = this.state
-        mailService.toggleReadMail(mailId).then()
-            .then(() => mailService.query(filterBy)
-                .then(mails => this.setState({ mails })))
+    onSetActiveMail = (mailId) => {
+        const { activeMail } = this.state
+        if (mailId === activeMail) {
+            this.setState({ activeMail: null }, this.loadMails)
+            return
+        }
+        this.setState({ activeMail: mailId })
+        mailService.toggleReadMail(mailId, true)
+            .then(this.loadMails)
     }
 
-    onDeleteMail = (mailId) => {
-        const { filterBy } = this.state
-        mailService.deleteMail(mailId).then()
-            .then(() => mailService.query(filterBy)
-                .then(mails => this.setState({ mails })))
+    getMailsToDisplay = (mails) => {
+        let { folder } = this.state
+        if (!folder) folder = 'inbox'
+        switch (folder) {
+            case 'inbox':
+                mails = mails.filter(mail => (!mail.sentAt && !mail.isTrash));
+                break;
+            case 'starred':
+                mails = mails.filter(mail => (mail.isMarked && !mail.isTrash));
+                break;
+            case 'sent':
+                mails = mails.filter(mail => (mail.sentAt && !mail.isTrash));
+                break;
+            case 'trash':
+                mails = mails.filter(mail => (mail.isTrash));
+                break;
+            case 'drafts':
+                mails = mails.filter(mail => (mail.isDraft && !mail.isTrash));
+                break;
+        }
+        return mails
+    }
+
+    onToggleMarkMail = (ev, mailId) => {
+        ev.stopPropagation()
+        mailService.toggleMarkMail(mailId)
+            .then(this.loadMails)
+    }
+
+    onToggleReadMail = (ev, mailId) => {
+        ev.stopPropagation()
+        mailService.toggleReadMail(mailId)
+            .then(this.loadMails)
+
+    }
+
+    onDeleteMail = (ev, mailId) => {
+        ev.stopPropagation()
+        mailService.deleteMail(mailId)
+            .then(this.loadMails)
+    }
+
+    onOpenComposeBox = (isOpenState) => {
+        if (isOpenState) this.setState({ isComposedBoxOpen: true })
+        else this.setState({ isComposedBoxOpen: false })
     }
 
     render() {
+        const { mails, folder, activeMail, isComposedBoxOpen } = this.state
         return <section>
             <MailHeader onSetFilter={this.onSetFilter} />
             <main className="main-mail-container">
-                <MailsSideBar />
-                <MailsList mails={this.state.mails} onToggleMarkMail={this.onToggleMarkMail} onDeleteMail={this.onDeleteMail} onToggleReadMail={this.onToggleReadMail} />
+                <MailsSideBar folder={folder}
+                    onSetFolder={this.onSetFolder}
+                    onOpenComposeBox={this.onOpenComposeBox} />
+                <MailsList mails={mails}
+                    activeMail={activeMail}
+                    onToggleMarkMail={this.onToggleMarkMail}
+                    onDeleteMail={this.onDeleteMail}
+                    onToggleReadMail={this.onToggleReadMail}
+                    onSetActiveMail={this.onSetActiveMail} />
+                {isComposedBoxOpen && <ComposeMailBox
+                    onOpenComposeBox={this.onOpenComposeBox} />}
             </main>
         </section>
     }
