@@ -3,6 +3,7 @@ import { NoteFilter } from '../cmps/note-filter.jsx'
 import { NoteList } from '../cmps/note-list.jsx'
 import { NoteAdd } from '../cmps/note-add.jsx'
 import { Screen } from '../../../cmps/screen.jsx'
+import { AppHeader } from '../../../cmps/app-header.jsx'
 
 export class KeepApp extends React.Component {
   state = {
@@ -43,16 +44,19 @@ export class KeepApp extends React.Component {
   render() {
     const { notes } = this.state
     return (
-      <section className='keep-app'>
-        <NoteAdd loadNotes={this.loadNotes} />
-        <NoteList
-          notes={notes}
-          onDeleteNote={this.onDeleteNote}
-          onDuplicateNote={this.onDuplicateNote}
-          onPinNote={this.onPinNote}
-        />
-        <Screen />
-      </section>
+      <React.Fragment>
+        <AppHeader pageName='keep' />
+        <section className='keep-app'>
+          <NoteAdd loadNotes={this.loadNotes} />
+          <NoteList
+            notes={notes}
+            onDeleteNote={this.onDeleteNote}
+            onDuplicateNote={this.onDuplicateNote}
+            onPinNote={this.onPinNote}
+          />
+          <Screen />
+        </section>
+      </React.Fragment>
     )
   }
 }

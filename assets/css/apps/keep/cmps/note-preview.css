@@ -5,7 +5,6 @@
 
 .note-preview {
   position: relative;
-  /* float: left; */
   min-height: 100px;
   display: flex;
   align-items: center;
@@ -13,14 +12,7 @@
   background-color: aliceblue;
   margin-bottom: 10px;
   margin-right: 10px;
-  /* outline: 1px solid rgba(0, 0, 0, 0.223); */
-  /* border: 1px solid rgba(0, 0, 0, 0.223); */
-  /* border: 1px solid transparent;
-  border-color: #e0e0e0; */
-  /* border: 1px solid transparent;
-  border-color: #e0e0e0; */
 
-  /* transition: 0.3s; */
   break-inside: avoid-column;
 }
 
@@ -108,7 +100,6 @@
   font-weight: 800;
   padding-bottom: 5px;
   margin-bottom: 10px;
-  /* border-bottom: 1px solid rgba(83, 83, 83, 0.249); */
 }
 
 .todos-container {
@@ -135,15 +126,11 @@
 }
 
 .todos-container li {
-  /* cursor: pointer; */
   display: flex;
 }
 
 .todos-container li p {
   padding-left: 10px;
-}
-
-.todos-container li button {
 }
 
 .todo-checked {

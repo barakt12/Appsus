@@ -9,9 +9,8 @@ import { AppFooter } from './cmps/app-footer.jsx'
 const Router = ReactRouterDOM.HashRouter
 const { Route, Switch } = ReactRouterDOM
 export class App extends React.Component {
-
   state = {
-    folder: null
+    folder: null,
   }
 
   onSetFolder = (folder) => {
@@ -22,11 +21,28 @@ export class App extends React.Component {
     const { folder } = this.state
     return (
       <Router>
-        <AppHeader />
         <section className='app'>
           <Switch>
-            <Route path='/mail/:mailId' component={props => <MailDetails {...props} onSetFolder={this.onSetFolder} folder={folder} />} />
-            <Route path='/mail' component={props => <MailApp {...props} onSetFolder={this.onSetFolder} folder={folder} />} />
+            <Route
+              path='/mail/:mailId'
+              component={(props) => (
+                <MailDetails
+                  {...props}
+                  onSetFolder={this.onSetFolder}
+                  folder={folder}
+                />
+              )}
+            />
+            <Route
+              path='/mail'
+              component={(props) => (
+                <MailApp
+                  {...props}
+                  onSetFolder={this.onSetFolder}
+                  folder={folder}
+                />
+              )}
+            />
             <Route path='/keep' component={KeepApp} />
             <Route path='/about' component={About} />
             <Route path='/' component={Home} />

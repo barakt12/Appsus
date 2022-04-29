@@ -4,7 +4,6 @@
   font-size: 1.4rem;
   padding-left: 25px;
   padding-right: 25px;
-  /* background-color: rgb(224, 224, 224); */
   box-shadow: inset 0 -1px 0 0 #dadce0;
 }
 
@@ -13,9 +12,12 @@
   color: black;
 }
 
+.app-header h3 {
+  font-size: 1.2rem;
+  color: #5f6368;
+}
+
 nav {
-  /* display: flex; */
-  /* justify-content: space-between; */
   position: absolute;
   right: 17.5px;
   top: 70px;
@@ -23,20 +25,16 @@ nav {
   flex-direction: column;
   align-items: center;
   width: 50px;
-  /* height: 100%; */
-  /* width: 240px; */
 }
 
 .openMenu {
   box-sizing: content-box;
   display: flex;
-  /* flex-direction: column; */
-  /* margin-left: 10px; */
+
   flex-wrap: wrap;
   width: 300px;
   background-color: #fff;
-  /* margin-right: 20px; */
-  /* padding: 6px; */
+
   padding-left: 12px;
   padding-top: 12px;
   position: absolute;
@@ -45,8 +43,6 @@ nav {
   border-radius: 8px;
   box-shadow: 0px 1px 2px 0px rgb(60 64 67 / 30%),
     0px 2px 6px 2px rgb(60 64 67 / 15%);
-
-  /* margin-top: 70px; */
 }
 
 .openMenu a {
@@ -75,16 +71,12 @@ nav {
 .menu {
   position: absolute;
   right: 0;
-  margin-top: 25px;
-  margin-right: 25px;
+  margin-top: 12.5px;
+  margin-right: 15px;
   width: 40px;
   height: 40px;
   cursor: pointer;
   color: #5f6368;
-}
-
-.openMenu img {
-  /* width: 50%; */
 }
 
 .keep-img {
@@ -92,10 +84,13 @@ nav {
   width: 40%;
 }
 
-.menu-keep span {
-  /* padding-top: 10px; */
-}
-
 .menu-book img {
   width: 48px;
+}
+
+.keep-header {
+  align-self: center;
+  width: 40px;
+  height: 44px;
+  padding-right: 10px;
 }

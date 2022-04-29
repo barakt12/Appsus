@@ -1,4 +1,5 @@
 const { Link, NavLink, withRouter } = ReactRouterDOM
+import { Menu } from './menu.jsx'
 
 class _AppHeader extends React.Component {
   state = {
@@ -12,54 +13,23 @@ class _AppHeader extends React.Component {
 
   render() {
     const { isOpen } = this.state
-
+    const { pageName } = this.props
     return (
-      <header className='app-header flex space-between'>
-        <Link to={'/'}>
-          <h3>Appsus</h3>
-        </Link>
+      <header className='app-header flex '>
+        {/* <Link to={'/'}> */}
+        <img src={`./assets/img/${pageName}.svg`} className='keep-header' />
+        <h3>{`Appsus ${
+          pageName !== 'keep' && pageName !== 'book'
+            ? ''
+            : pageName[0].toUpperCase() + pageName.slice(1)
+        }`}</h3>
+        {/* </Link> */}
 
         <a className='menu' onClick={this.onToggleMenu}>
           <img src='./assets/img/menu.svg' />
         </a>
         <nav className=''>
-          {isOpen && (
-            <div className='openMenu'>
-              <NavLink
-                to='/'
-                exact
-                className='menu-home'
-                onClick={this.onToggleMenu}
-              >
-                <img className='home-img' src='./assets/img/home.png' />
-                <span>Home</span>
-              </NavLink>
-              <NavLink to='/about' onClick={this.onToggleMenu}>
-                <img src='./assets/img/about.png' className='about-img' />
-                <span>About</span>
-              </NavLink>
-              <NavLink
-                to='/keep'
-                className='menu-keep'
-                onClick={this.onToggleMenu}
-              >
-                <img src='./assets/img/keep.svg' className='keep-img' />
-                <span>Keep</span>
-              </NavLink>
-              <NavLink to='/mail' onClick={this.onToggleMenu}>
-                <img src='./assets/img/gmail.svg' className='gmail-img' />
-                <span>Mail</span>
-              </NavLink>
-              <NavLink
-                to='/book'
-                className='menu-book'
-                onClick={this.onToggleMenu}
-              >
-                <img src='./assets/img/book.png' />
-                <span>Book</span>
-              </NavLink>
-            </div>
-          )}
+          {isOpen && <Menu onToggleMenu={this.onToggleMenu} />}
         </nav>
       </header>
     )

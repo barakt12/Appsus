@@ -1,5 +1,5 @@
 const { Route, NavLink, Switch } = ReactRouterDOM
-
+import { AppHeader } from '../cmps/app-header.jsx'
 export class About extends React.Component {
   // intervalId
 
@@ -17,37 +17,40 @@ export class About extends React.Component {
 
   render() {
     return (
-      <section className='about layout'>
-        {/* <nav>
+      <React.Fragment>
+        <AppHeader pageName={'about'} />
+        <section className='about layout'>
+          {/* <nav>
           <NavLink to='/about/team'>Team</NavLink>
           <NavLink to='/about/vision'>Vision</NavLink>
         </nav> */}
-        <h1>About Us</h1>
-        <section>
-          <Switch>
-            <Route path='/about/team' component={Team} />
-            <Route path='/about/vision' component={Vision} />
-          </Switch>
+          <h1>About Us</h1>
+          {/* <section>
+            <Switch>
+              <Route path='/about/team' component={Team} />
+              <Route path='/about/vision' component={Vision} />
+            </Switch>
+          </section> */}
         </section>
-      </section>
+      </React.Fragment>
     )
   }
 }
 
-function Team() {
-  return (
-    <section className='team'>
-      <div>Mishu Mashu</div>
-      <div>Jorge </div>
-    </section>
-  )
-}
+// function Team() {
+//   return (
+//     <section className='team'>
+//       <div>Mishu Mashu</div>
+//       <div>Jorge </div>
+//     </section>
+//   )
+// }
 
-function Vision() {
-  return (
-    <section className='vision'>
-      <div>To take your money</div>
-      <div>Sell nice cars</div>
-    </section>
-  )
-}
+// function Vision() {
+//   return (
+//     <section className='vision'>
+//       <div>To take your money</div>
+//       <div>Sell nice cars</div>
+//     </section>
+//   )
+// }

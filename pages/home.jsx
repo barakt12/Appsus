@@ -1,6 +1,9 @@
+import { AppHeader } from '../cmps/app-header.jsx'
+
 export function Home() {
   return (
     <React.Fragment>
+      <AppHeader pageName='home' />
       <img src='./assets/img/bg.jpg' className='bg-img' />
       <section className='home layout'>
         <h1 className='welcome'>Welcome to Appsus</h1>
