@@ -13,18 +13,14 @@
 .note-img-description {
   display: flex;
   flex-direction: column;
-  padding-top: 10px;
-  padding-left: 10px;
+  padding-top: 15px;
+  padding-left: 15px;
   padding-right: 10px;
-  /* justify-content: space-between; */
-  /* align-items: center; */
-  /* height: 80px; */
-  /* height: 40px; */
 }
 
 .note-img-description h4 {
   margin: unset;
-  /* padding-top: 10px; */
-  /* padding-left: 20px; */
-  height: 40px;
+  font-weight: 600;
+
+  height: 30px;
 }

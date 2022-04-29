@@ -29,7 +29,13 @@ export class NoteAdd extends React.Component {
   onAddNote = (ev) => {
     ev.preventDefault()
     const note = this.state
-    console.log(note)
+    if (
+      !note.noteInfo.title.length &&
+      !note.noteInfo.todos.length &&
+      !note.noteInfo.txt.length &&
+      !note.noteInfo.url.length
+    )
+      return
     noteService
       .addNote(note)
       .then(
