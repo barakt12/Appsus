@@ -25,7 +25,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px;
+    padding: 15px;
 }
 
 .compose-form {
@@ -37,6 +37,18 @@
 .compose-box-container .close-compose-btn {
     font-size: 1.5rem;
     cursor: pointer;
+    height: 20px;
+    width: 20px;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    padding-left: 3px;
+    padding-bottom: 1px;
+}
+
+.compose-box-container .close-compose-btn:hover {
+    color: white;
+    background-color: gray;
 }
 
 .compose-box-container span:first-child {
@@ -52,7 +64,7 @@
 }
 
 .compose-box-container:not(.compose-content) textarea {
-    font-size: 1rem;
+    font-size: 0.8rem;
     width: 100%;
     line-height: 34px;
 }

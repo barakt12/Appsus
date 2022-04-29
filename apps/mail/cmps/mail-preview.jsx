@@ -26,6 +26,7 @@ export function MailPreview({ props, mail }) {
     <span className={`mail-date ${readingClassName}`}>{date}</span>
     <div className="trash-container" onClick={(ev) => onDeleteMail(ev, id)}><img src="apps/mail/assets/img/delete-icon.png" /></div>
     <div className="reading-container" onClick={(ev) => onToggleReadMail(ev, id)}><img src={`apps/mail/assets/img/${readingClassName}-mail-icon.png`} /></div>
+    <div className="full-screen-container"><img src="apps/mail/assets/img/full-screen-icon.png" /></div>
   </article>
   )
 }
