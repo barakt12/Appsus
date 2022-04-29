@@ -33,19 +33,19 @@ export class ComposeMailBox extends React.Component {
 
     onAutoSaveDraft = () => {
         mailService.autoSaveDraft(this.state.draft)
-        this.props.loadMails()
+        if (this.props.loadMails) this.props.loadMails()
     }
 
     onSendMail = (ev) => {
         ev.preventDefault()
         mailService.sendMail(this.state.draft)
-        this.props.loadMails()
+        if (this.props.loadMails) this.props.loadMails()
         this.props.onOpenComposeBox(false)
     }
 
     onCloseComposeBox = () => {
         mailService.autoSaveDraft(this.state.draft)
-        this.props.loadMails()
+        if (this.props.loadMails) this.props.loadMails()
         this.props.onOpenComposeBox(false)
     }
 
