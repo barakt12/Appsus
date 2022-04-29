@@ -162,7 +162,7 @@ function autoSaveDraft(newDraft) {
     getMailById(newDraft.id).then(draft => {
         draft.subject = newDraft.subject || ''
         draft.body = newDraft.body || ''
-        draft.sentAt = newDraft.sentAt || ''
+        draft.sentAt = Date.now() || ''
         draft.to = newDraft.to || ''
         updateMail(draft)
     })

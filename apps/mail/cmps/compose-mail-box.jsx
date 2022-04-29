@@ -49,6 +49,14 @@ export class ComposeMailBox extends React.Component {
         this.props.onOpenComposeBox(false)
     }
 
+    onDeleteDraft = () => {
+        mailService.deleteMail(this.state.draft.id)
+            .then(() => {
+                if (this.props.loadMails) this.props.loadMails()
+                this.props.onOpenComposeBox(false)
+            })
+    }
+
     render() {
         return <div className="compose-box-container">
             <div className="compose-title">
@@ -67,7 +75,7 @@ export class ComposeMailBox extends React.Component {
                 </div>
                 <div className="compose-tools">
                     <button onClick={(ev) => this.onSendMail(ev)}>Send</button>
-                    <img src="apps/mail/assets/img/delete-icon.png" />
+                    <img className="delete-draft-btn" src="apps/mail/assets/img/delete-icon.png" onClick={this.onDeleteDraft} />
                 </div>
             </form>
 
