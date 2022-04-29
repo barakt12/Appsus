@@ -6,13 +6,14 @@ import { noteService } from '../services/note.service.js'
 
 export class NotePreview extends React.Component {
   state = {
+    isPinned: false,
     note: null,
     noteType: null,
   }
 
   componentDidMount() {
     const { note } = this.props
-    this.setState({ note, noteType: note.type })
+    this.setState({ note, noteType: note.type, isPinned: note.isPinned })
   }
 
   onChangeNoteColor = (noteId, color) => {
@@ -21,6 +22,16 @@ export class NotePreview extends React.Component {
         note: { ...prevState.note, style: { backgroundColor: color } },
       }))
     })
+  }
+  onPin = (ev, noteId) => {
+    ev.stopPropagation()
+    ev.preventDefault()
+    const { onPinNote } = this.props
+    onPinNote(ev, noteId)
+    this.setState((prevState) => ({
+      ...prevState,
+      isPinned: !this.state.isPinned,
+    }))
   }
 
   render() {
@@ -40,14 +51,28 @@ export class NotePreview extends React.Component {
           return <NoteVideo {...props} />
       }
     }
+
+    const inlineStyle =
+      note.style.backgroundColor !== '#fff' && noteType !== 'note-img'
+        ? { backgroundColor: note.style.backgroundColor }
+        : {
+            backgroundColor: note.style.backgroundColor,
+            border: '1px solid transparent',
+            borderColor: '#e0e0e0',
+          }
+
     return (
-      <div
-        className='note-preview'
-        style={{
-          backgroundColor: note.style.backgroundColor,
-        }}
-      >
-        <DynamicCmp note={note} onChangeNoteColor={this.onChangeNoteColor} />
+      <div className='note-preview-shadow-protection'>
+        <div className='note-preview' style={inlineStyle}>
+          <DynamicCmp
+            note={note}
+            onChangeNoteColor={this.onChangeNoteColor}
+            onDeleteNote={this.props.onDeleteNote}
+            onDuplicateNote={this.props.onDuplicateNote}
+            onPin={this.onPin}
+            isPinned={this.state.isPinned}
+          />
+        </div>
       </div>
     )
   }

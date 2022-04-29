@@ -26,10 +26,14 @@
   outline: none;
   padding: 12px 16px 12px 16px;
   width: 100%;
-  font-size: 14px;
+  font-size: 16px;
   border: solid transparent;
   letter-spacing: 0.2px;
   height: 100%;
+}
+
+.note-add form input::placeholder {
+  color: #202124;
 }
 
 .note-add form input:first-child {
@@ -71,15 +75,25 @@
 .type-btns {
   display: flex;
   justify-content: space-between;
-  width: 150px;
+  /* width: 150px; */
   right: 20px;
-  top: 15px;
+  top: 5px;
   position: absolute;
 }
 
 .type-btns > * {
   border: none;
+  color: rgb(76, 76, 76);
+
   font-size: 1rem;
   cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
   background-color: unset;
+}
+
+.type-btns > *:hover {
+  opacity: 0.87;
+  background-color: rgba(95, 99, 104, 0.157);
 }

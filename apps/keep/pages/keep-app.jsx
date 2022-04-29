@@ -6,6 +6,7 @@ import { Screen } from '../../../cmps/screen.jsx'
 
 export class KeepApp extends React.Component {
   state = {
+    isPinnedNotes: false,
     filterBy: null,
     notes: [],
   }
@@ -14,9 +15,28 @@ export class KeepApp extends React.Component {
     this.loadNotes()
   }
 
+  onPinNote = (ev, noteId) => {
+    ev.preventDefault()
+    noteService
+      .togglePin(noteId)
+      .then((notes) => this.setState((prevState) => ({ ...prevState, notes })))
+  }
+
+  onDeleteNote = (noteId) => {
+    noteService
+      .deleteNote(noteId)
+      .then((notes) => this.setState((prevState) => ({ ...prevState, notes })))
+  }
+
+  onDuplicateNote = (noteId) => {
+    noteService
+      .duplicateNote(noteId)
+      .then((notes) => this.setState((prevState) => ({ ...prevState, notes })))
+  }
+
   loadNotes = () => {
     noteService.query().then((notes) => {
-      this.setState({ notes })
+      this.setState({ notes }, () => {})
     })
   }
 
@@ -25,7 +45,12 @@ export class KeepApp extends React.Component {
     return (
       <section className='keep-app'>
         <NoteAdd loadNotes={this.loadNotes} />
-        <NoteList notes={notes} />
+        <NoteList
+          notes={notes}
+          onDeleteNote={this.onDeleteNote}
+          onDuplicateNote={this.onDuplicateNote}
+          onPinNote={this.onPinNote}
+        />
         <Screen />
       </section>
     )

@@ -1,3 +1,8 @@
+.note-preview-shadow-protection {
+  border: 2px solid transparent;
+  break-inside: avoid;
+}
+
 .note-preview {
   position: relative;
   /* float: left; */
@@ -9,13 +14,63 @@
   margin-bottom: 10px;
   margin-right: 10px;
   /* outline: 1px solid rgba(0, 0, 0, 0.223); */
-  border: 1px solid rgba(0, 0, 0, 0.223);
+  /* border: 1px solid rgba(0, 0, 0, 0.223); */
+  /* border: 1px solid transparent;
+  border-color: #e0e0e0; */
+  /* border: 1px solid transparent;
+  border-color: #e0e0e0; */
+
   /* transition: 0.3s; */
   break-inside: avoid-column;
 }
 
+.pin-btn {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  outline: none;
+  border: none;
+  background-color: unset;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  font-size: 1.05rem;
+  border-radius: 40px;
+  padding: none;
+  opacity: 0;
+  transition: 0.3s;
+  color: rgb(91, 91, 91);
+}
+
+.pin-btn.pinned {
+  opacity: 1;
+  color: rgb(24, 24, 24);
+}
+
+.pin-btn.video {
+  top: unset;
+  bottom: 5px;
+  right: 5px;
+}
+
+.note-preview:hover .pin-btn {
+  opacity: 1;
+}
+.pin-btn:hover {
+  color: rgb(24, 24, 24);
+  background-color: rgba(95, 99, 104, 0.157);
+}
+
+.pin-btn.image {
+  background-color: unset;
+}
+
+.note-preview:hover {
+  box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
+}
+
 .note-preview:hover .preview-toolbar {
-  opacity: 0.87;
+  opacity: 1;
 }
 
 .note-preview .note-video-container {
@@ -47,7 +102,9 @@
 }
 
 .note-text {
-  font-size: 1.2rem;
+  margin-top: 5px;
+
+  font-size: 14px;
   font-family: open-sans;
 }
 
@@ -55,7 +112,7 @@
   font-weight: 800;
   padding-bottom: 5px;
   margin-bottom: 10px;
-  border-bottom: 1px solid rgba(83, 83, 83, 0.249);
+  /* border-bottom: 1px solid rgba(83, 83, 83, 0.249); */
 }
 
 .todos-container {
@@ -73,6 +130,8 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  margin-bottom: 10px;
+  font-size: 14px;
 }
 
 .todos-container p {
@@ -80,6 +139,7 @@
 }
 
 .todos-container li {
+  /* cursor: pointer; */
   display: flex;
 }
 
@@ -88,6 +148,13 @@
 }
 
 .todos-container li button {
+}
+
+.todo-checked {
+  text-decoration: line-through;
+}
+
+.checkbox {
   width: 20px;
   height: 20px;
   border-radius: 20px;
@@ -97,6 +164,12 @@
   outline: none;
   border: none;
   background-color: unset;
+  font-size: 16px;
+  color: #2e2e2e;
+}
+
+.checkbox:hover {
+  color: black;
 }
 
 textarea {

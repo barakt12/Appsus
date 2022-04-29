@@ -9,8 +9,11 @@ export const noteService = {
   createNote,
   updateNoteText,
   addNote,
-  deleteNote,
   changeNoteColor,
+  deleteNote,
+  duplicateNote,
+  toggleTodoCheck,
+  togglePin,
 }
 
 function query(filterBy) {
@@ -35,7 +38,144 @@ function _saveToStorage(notes) {
 function _createNotes() {
   const notes = [
     {
-      id: utilService.makeId(),
+      id: 'kXNoEB',
+      type: 'note-txt',
+      isPinned: false,
+      info: {
+        title: 'Next Friday',
+        txt: '12:00-13:00 - Lunch\n13:00-14:30 - Driving to tavor Mountain\n14:30-15:30 - Jogging\n15:30-18:00 - Shower & Snacks\n18:00-19:00 - Driving to the Kinneret\n19:00-21:30 - Dinner and TV',
+        url: '',
+        todos: [],
+      },
+      style: {
+        backgroundColor: '#E6C9A8',
+      },
+    },
+    {
+      id: 'pFBwMV',
+      type: 'note-img',
+      isPinned: false,
+      info: {
+        title: 'Trip to England',
+        txt: '',
+        url: 'https://upload.wikimedia.org/wikipedia/en/thumb/b/be/Flag_of_England.svg/1200px-Flag_of_England.svg.png',
+        todos: [],
+      },
+      style: {
+        backgroundColor: '#FDCFE8',
+      },
+    },
+    {
+      id: 'u1rwav',
+      type: 'note-todos',
+      isPinned: false,
+      info: {
+        title: 'Groceries',
+        txt: '',
+        url: '',
+        todos: [
+          {
+            txt: 'Water',
+            isChecked: false,
+          },
+          {
+            txt: 'Bamba',
+            isChecked: true,
+          },
+          {
+            txt: 'Milk 3%',
+            isChecked: true,
+          },
+          {
+            txt: 'Bread',
+            isChecked: false,
+          },
+          {
+            txt: 'Rice',
+            isChecked: true,
+          },
+          {
+            txt: 'Toiler Paper',
+            isChecked: false,
+          },
+          {
+            txt: 'Pasta',
+            isChecked: false,
+          },
+          {
+            txt: 'Tomatoes',
+            isChecked: true,
+          },
+          {
+            txt: 'Jalapeno',
+            isChecked: false,
+          },
+        ],
+      },
+      style: {
+        backgroundColor: '#F28B82',
+      },
+    },
+    {
+      id: 'qE1Rby',
+      type: 'note-todos',
+      isPinned: false,
+      info: {
+        title: 'Beach Time',
+        txt: '',
+        url: '',
+        todos: [
+          {
+            txt: 'Sunscreen',
+            isChecked: true,
+          },
+          {
+            txt: 'Ice',
+            isChecked: false,
+          },
+          {
+            txt: 'Surfboard',
+            isChecked: false,
+          },
+          {
+            txt: 'Watermelon',
+            isChecked: false,
+          },
+        ],
+      },
+      style: {
+        backgroundColor: '#CBF0F8',
+      },
+    },
+    {
+      id: 'svPO8T',
+      type: 'note-todos',
+      isPinned: false,
+      info: {
+        title: 'Todo list for tomorrow',
+        txt: '',
+        url: '',
+        todos: [
+          {
+            txt: 'Go Fishing',
+            isChecked: true,
+          },
+          {
+            txt: 'Eat Fish',
+            isChecked: true,
+          },
+          {
+            txt: 'Eat more',
+            isChecked: false,
+          },
+        ],
+      },
+      style: {
+        backgroundColor: '#FFF475',
+      },
+    },
+    {
+      id: 'TUfens',
       type: 'note-txt',
       isPinned: false,
       info: {
@@ -45,12 +185,12 @@ function _createNotes() {
         title: 'Hello',
       },
       style: {
-        backgroundColor: 'aliceblue',
+        backgroundColor: '#F1E4DE',
         color: '000',
       },
     },
     {
-      id: utilService.makeId(),
+      id: 'WzQ9KF',
       type: 'note-img',
       isPinned: false,
       info: {
@@ -58,34 +198,44 @@ function _createNotes() {
         title: 'Bobi and Me',
       },
       style: {
-        backgroundColor: 'fff',
+        backgroundColor: '#FFF475',
       },
     },
     {
-      id: utilService.makeId(),
+      id: '9dKEIj',
       type: 'note-todos',
       isPinned: false,
       info: {
         title: 'List 1',
-        todos: [{ txt: 'Something1' }, { txt: 'Something2' }],
+        todos: [
+          {
+            txt: 'Something1',
+            isChecked: false,
+          },
+          {
+            txt: 'Something2',
+            isChecked: true,
+          },
+        ],
       },
       style: {
-        backgroundColor: 'fff',
+        backgroundColor: '#A7FFEB',
       },
     },
     {
-      id: utilService.makeId(),
+      id: 'JIUJb7',
       type: 'note-video',
       isPinned: false,
       info: {
         videoId: 'AEpZbvtiQFs',
       },
       style: {
-        backgroundColor: 'fff',
+        backgroundColor: '#FDCFE8',
       },
     },
   ]
   _saveToStorage(notes)
+  console.log(notes)
   return notes
 }
 
@@ -147,7 +297,7 @@ function addNote(note) {
     isPinned: false,
     info: { ...noteInfo },
     style: {
-      backgroundColor: 'fff',
+      backgroundColor: '#fff',
     },
   }
   const notes = _loadFromStorage()
@@ -170,4 +320,47 @@ function deleteNote(noteId) {
   notes.splice(idx, 1)
   _saveToStorage(notes)
   return Promise.resolve(notes)
+}
+
+function duplicateNote(noteId) {
+  const notes = _loadFromStorage()
+  const note = notes.find((note) => {
+    return noteId === note.id
+  })
+  const duplicateNote = { ...note }
+  duplicateNote.id = utilService.makeId()
+  duplicateNote.isPinned = false
+  notes.unshift(duplicateNote)
+  sortByPinned(notes)
+  _saveToStorage(notes)
+  return Promise.resolve(notes)
+}
+
+function toggleTodoCheck(idx, noteId) {
+  const notes = _loadFromStorage()
+  const note = notes.find((note) => noteId === note.id)
+  const todos = note.info.todos
+  todos[idx].isChecked = !todos[idx].isChecked
+  _saveToStorage(notes)
+  return Promise.resolve(todos)
+}
+
+function togglePin(noteId) {
+  const notes = _loadFromStorage()
+  const note = notes.find((note) => noteId === note.id)
+  note.isPinned = !note.isPinned
+  sortByPinned(notes)
+  _saveToStorage(notes)
+  console.log(notes)
+  return Promise.resolve(notes)
+}
+function sortByPinned(notes) {
+  return notes.sort((a, b) => {
+    console.log(a, b)
+    if (a.isPinned && !b.isPinned) {
+      return -1
+    } else {
+      return 1
+    }
+  })
 }

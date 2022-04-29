@@ -1,4 +1,5 @@
 .app-header {
+  z-index: 20;
   position: relative;
   padding-left: 25px;
   padding-right: 25px;

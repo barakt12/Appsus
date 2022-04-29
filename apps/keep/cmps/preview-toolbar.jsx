@@ -1,12 +1,17 @@
 import { NoteColor } from './note-color.jsx'
 export function PreviewToolbar(props) {
-  const { noteId, onChangeNoteColor } = props
-
+  const { noteId, onChangeNoteColor, onDeleteNote, onDuplicateNote } = props
   return (
     <div className='preview-toolbar'>
       <NoteColor noteId={noteId} onChangeNoteColor={onChangeNoteColor} />
-      <button className='fa-regular fa-trash-can'></button>
-      <button className='fa-regular fa-clone'></button>
+      <button
+        onClick={() => onDeleteNote(noteId)}
+        className='fa-regular fa-trash-can'
+      ></button>
+      <button
+        onClick={() => onDuplicateNote(noteId)}
+        className='fa-regular fa-clone'
+      ></button>
       <button className='fa-solid fa-envelope-open-text'></button>
     </div>
   )

@@ -9,7 +9,10 @@ export class NoteText extends React.Component {
 
   componentDidMount() {
     const { note } = this.props
-    this.setState({ noteTitle: note.info.title, noteText: note.info.txt })
+    this.setState({
+      noteTitle: note.info.title,
+      noteText: note.info.txt,
+    })
   }
 
   handleTextChange = ({ target }) => {
@@ -58,9 +61,17 @@ export class NoteText extends React.Component {
           value={noteText}
           onChange={this.handleTextChange}
         ></textarea>
+        <button
+          className={`fa-solid fa-thumbtack pin-btn ${
+            this.props.isPinned ? 'pinned' : ''
+          }`}
+          onClick={(ev) => this.props.onPin(ev, this.props.note.id)}
+        ></button>
         <PreviewToolbar
           noteId={this.props.note.id}
           onChangeNoteColor={this.props.onChangeNoteColor}
+          onDeleteNote={this.props.onDeleteNote}
+          onDuplicateNote={this.props.onDuplicateNote}
         />
       </div>
     )

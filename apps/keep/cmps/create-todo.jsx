@@ -1,6 +1,6 @@
 export class CreateTodo extends React.Component {
   state = {
-    todos: ['', ''],
+    todos: [''],
   }
 
   clearTodoLine = () => {
