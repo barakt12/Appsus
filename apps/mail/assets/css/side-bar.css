@@ -2,6 +2,7 @@
     width: 16.25rem;
     height: fit-content;
     position: relative;
+    margin-right: 10px;
 }
 
 .side-bar .compose-container {
@@ -12,7 +13,7 @@
     top: 0;
     left: 0.5rem;
     right: 6.4375rem;
-    width: 7.5rem;
+    width: 8.5rem;
     height: 3rem;
     line-height: 2rem;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
@@ -20,7 +21,14 @@
     font-size: 0.875rem;
     color: #202124;
     letter-spacing: 0.25px;
+    padding: 13px;
     cursor: pointer;
+}
+
+.side-bar .compose-img {
+    width: 32px;
+    height: 32px;
+
 }
 
 .side-bar .folders-container {
@@ -64,6 +72,7 @@
 
 .side-bar .folders-container .content.inbox-content.active {
     color: #d93025;
+    font-weight: 700;
 }
 
 .side-bar .folder.active:not(.inbox-folder) {

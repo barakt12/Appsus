@@ -1,13 +1,14 @@
-export function MailsSideBar({ folder, onSetFolder, onOpenComposeBox }) {
+export function MailsSideBar({ folder, onSetFolder, onOpenComposeBox, onGetInboxUnreadMails }) {
     const inboxActiveClass = folder === 'inbox' ? 'active' : ''
     const starredActiveClass = folder === 'starred' ? 'active' : ''
     const sentActiveClass = folder === 'sent' ? 'active' : ''
     const trashActiveClass = folder === 'trash' ? 'active' : ''
     const draftsActiveClass = folder === 'drafts' ? 'active' : ''
+    const inboxUnreadMails = onGetInboxUnreadMails()
 
     return <section className="side-bar">
         <div className="compose-container" onClick={() => onOpenComposeBox(true)}>
-            <span>+</span>
+            <img src="./apps/mail/assets/img/compose-icon.png" className="compose-img" />
             <span>Compose</span>
         </div>
         <div className="folders-container">
@@ -15,7 +16,7 @@ export function MailsSideBar({ folder, onSetFolder, onOpenComposeBox }) {
                 <img src="apps/mail/assets/img/inbox-icon.png" className="side-img" />
                 <span className="content inbox-content">
                     <span className={`content inbox-content ${inboxActiveClass}`}>Inbox</span>
-                    <span className={`content inbox-content amount ${inboxActiveClass}`}>555</span>
+                    <span className={`content inbox-content amount ${inboxActiveClass}`}>{inboxUnreadMails}</span>
                 </span>
             </div>
             <div className={`folder ${starredActiveClass}`} onClick={() => onSetFolder('starred')}>

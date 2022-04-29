@@ -1,13 +1,13 @@
 .preview-container {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
-    height: 20px;
+    height: 40px;
     box-shadow: rgba(100, 121, 143, 0.12) 0px -1px 0px 0px inset;
     padding-bottom: 10px;
     padding-top: 10px;
     padding: 15px;
-    width: calc(100vw - 16.25rem);
+    width: calc(98vw - 16.25rem);
     font-size: 0.8rem;
     cursor: pointer;
 }
@@ -17,9 +17,28 @@
     box-shadow: inset 1px 0 0 #dadce0, inset -1px 0 0 #dadce0, 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
 }
 
+.preview-container:hover .mail-date {
+    display: none;
+}
+
+.preview-container .full-screen-container,
+.preview-container .trash-container,
+.preview-container .reading-container {
+    display: none;
+}
+
+.preview-container:hover .trash-container,
+.preview-container:hover .reading-container {
+    display: unset;
+}
+
 .preview-container>* :not(.star) :not(.date) {
     display: flex;
     justify-content: flex-start;
+}
+
+.preview-container>* {
+    padding: 8px;
 }
 
 .preview-container:hover .star {
@@ -42,13 +61,12 @@
 }
 
 .preview-container .content {
-    width: 300px;
+    width: 70%;
     overflow: hidden;
 }
 
 .preview-container .subject {
     overflow: ellipsis;
-    width: 100%;
     white-space: nowrap;
     overflow: hidden;
 }
@@ -65,17 +83,37 @@
 }
 
 .preview-container .mailAddress {
-    width: 200px;
+    width: 15%;
+}
+
+.preview-container .mail-date {
+    width: 10%;
+    position: absolute;
+    right: 0;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 30px;
 }
 
 .preview-container .mailAddress.unread,
-.preview-container .subject.unread {
-    font-weight: 700;
+.preview-container .subject.unread,
+.preview-container .mail-date.unread {
+    font-weight: 800;
 }
 
 .preview-container .trash-container,
 .preview-container .reading-container {
+    position: absolute;
+    right: 20px;
     cursor: pointer;
+}
+
+.preview-container .trash-container {
+    right: 50px;
+}
+
+.preview-container .reading-container {
+    right: 20px;
 }
 
 /* //ACTIVE MAIL */
@@ -90,6 +128,7 @@
     position: relative;
 }
 
+.preview-container.active .full-screen-container,
 .preview-container.active .trash-container,
 .preview-container.active .star {
     position: absolute;
@@ -97,56 +136,68 @@
 }
 
 .preview-container.active .star {
-    left: 10px;
-    height: 20px;
-    width: 20px;
+    right: 70px;
+    top: 0;
+    height: 40px;
+    width: 36px;
+    font-size: 25px;
     display: flex;
     align-items: center;
+    justify-content: center;
+}
+
+.preview-container.active .full-screen-container,
+.preview-container.active .trash-container {
+    width: fit-content;
+    display: unset;
+}
+
+.preview-container.active .full-screen-container {
+    right: 10px;
 }
 
 .preview-container.active .trash-container {
-    left: 40px
+    right: 40px;
 }
 
+.preview-container.active .full-screen-container img {
+    height: 20px;
+    width: 20px;
+}
+
+.preview-container.active .mail-date,
 .preview-container.active .reading-container {
     display: none;
 }
 
 .preview-container.active .subject,
-.preview-container.active .mail-date,
 .preview-container.active .mailAddress,
 .preview-container.active .body {
     display: flex;
-    justify-content: center;
-}
-
-
-.preview-container.active .subject:before {
-    content: 'Subject:';
-    margin-right: 30px;
-    font-weight: 700;
+    /* justify-content: center; */
+    justify-content: flex-start;
 }
 
 .preview-container.active .subject {
     position: absolute;
-    left: 50%;
-    transform: translate(-50%);
-    top: 10px;
-}
-
-.preview-container.active .mail-date {
-    position: absolute;
-    top: 58px;
+    left: 26px;
+    top: 20px;
+    font-size: 16px;
+    font-weight: 700;
 }
 
 .preview-container.active .mailAddress {
     position: absolute;
-    top: 35px;
+    top: 45px;
+    left: 19px;
 }
 
 .preview-container.active .body {
     position: absolute;
-    left: 50%;
+    left: 27px;
     transform: translate(-50%);
-    top: 100px;
+    top: 85px;
+    white-space: pre-wrap;
+    transform: translate(0);
+    line-height: 20px;
 }

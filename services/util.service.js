@@ -115,18 +115,18 @@ function getDayName(date, locale) {
 
 function getMonthName(date) {
   const monthNames = [
-    'January',
-    'February',
-    'March',
-    'April',
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
     'May',
     'June',
     'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
+    'Aug',
+    'Sept',
+    'Oct',
+    'Nov',
+    'Dec',
   ]
   return monthNames[date.getMonth()]
 }
