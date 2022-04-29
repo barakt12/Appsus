@@ -1,4 +1,5 @@
 import { utilService } from '../../../services/util.service.js'
+const { Link } = ReactRouterDOM
 
 export function MailPreview({ props, mail }) {
   const { activeMail, onToggleMarkMail, onDeleteMail, onToggleReadMail, onSetActiveMail } = props
@@ -26,7 +27,7 @@ export function MailPreview({ props, mail }) {
     <span className={`mail-date ${readingClassName}`}>{date}</span>
     <div className="trash-container" onClick={(ev) => onDeleteMail(ev, id)}><img src="apps/mail/assets/img/delete-icon.png" /></div>
     <div className="reading-container" onClick={(ev) => onToggleReadMail(ev, id)}><img src={`apps/mail/assets/img/${readingClassName}-mail-icon.png`} /></div>
-    <div className="full-screen-container"><img src="apps/mail/assets/img/full-screen-icon.png" /></div>
+    <Link className="full-screen-container" to={`/mail/${id}`} ><img src="apps/mail/assets/img/full-screen-icon.png" /></Link>
   </article>
   )
 }

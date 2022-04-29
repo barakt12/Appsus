@@ -18,6 +18,7 @@
 @import '../../apps/mail/assets/css/mails-filter.css';
 @import '../../apps/mail/assets/css/mail-header.css';
 @import '../../apps/mail/assets/css/mail-app.css';
+@import '../../apps/mail/assets/css/mail-details.css';
 
 /* Apps  */
 @import './apps/keep/keep-app.css';

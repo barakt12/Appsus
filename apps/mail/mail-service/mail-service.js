@@ -10,6 +10,7 @@ export const mailService = {
     getLoggedInUserMail,
     sendMail,
     getInboxUnreadMails,
+    getMailById,
 }
 
 const KEY = 'mailsDB'
@@ -141,6 +142,7 @@ function query(filterBy) {
 }
 
 function getMailById(mailId) {
+    console.log('IN')
     const mails = _loadMailsFromStorage() || gMailsToDisplay
     const mail = mails.find(mail => mail.id === mailId)
     return Promise.resolve(mail)
@@ -186,7 +188,6 @@ function toggleMarkMail(mailId) {
 }
 
 function toggleReadMail(mailId, isRead) {
-    console.log('id-from-read-mail', mailId, isRead)
     return getMailById(mailId).then(mail => {
         if (isRead) {
             mail.isRead = true

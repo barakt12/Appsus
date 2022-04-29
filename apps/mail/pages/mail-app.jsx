@@ -3,6 +3,7 @@ import { MailHeader } from '../cmps/mail-header.jsx'
 import { MailsSideBar } from '../cmps/mails-side-bar.jsx'
 import { MailsList } from '../cmps/mails-list.jsx'
 import { ComposeMailBox } from '../cmps/compose-mail-box.jsx'
+// import { MailDetails } from '../pages/mail-details.jsx'
 
 export class MailApp extends React.Component {
   state = {
@@ -11,10 +12,16 @@ export class MailApp extends React.Component {
     folder: 'inbox', // inbox/starred/sent/trash/drafts
     activeMail: '',
     isComposedBoxOpen: false,
+    // selectedMail: null, // test: 'v5001'
   }
 
   componentDidMount() {
-    this.loadMails()
+    const folder = this.props.folder || 'inbox'
+    this.setState({ folder }, this.loadMails())
+  }
+
+  componentWillUnmount() {
+    this.props.onSetFolder(this.state.folder)
   }
 
   loadMails = () => {
@@ -93,7 +100,7 @@ export class MailApp extends React.Component {
   }
 
   render() {
-    const { mails, folder, activeMail, isComposedBoxOpen } = this.state
+    const { mails, folder, activeMail, isComposedBoxOpen, selectedMail } = this.state
     return (
       <section>
         <MailHeader onSetFilter={this.onSetFilter} />
@@ -112,9 +119,8 @@ export class MailApp extends React.Component {
             onToggleReadMail={this.onToggleReadMail}
             onSetActiveMail={this.onSetActiveMail}
           />
-          {isComposedBoxOpen && (
-            <ComposeMailBox onOpenComposeBox={this.onOpenComposeBox} loadMails={this.loadMails} />
-          )}
+          {isComposedBoxOpen && <ComposeMailBox onOpenComposeBox={this.onOpenComposeBox} loadMails={this.loadMails} />}
+          {/* {selectedMail && <MailDetails />} */}
         </main>
       </section>
     )
