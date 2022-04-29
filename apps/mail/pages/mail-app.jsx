@@ -83,9 +83,13 @@ export class MailApp extends React.Component {
     mailService.deleteMail(mailId).then(this.loadMails)
   }
 
-  onOpenComposeBox = (isOpenState) => {
+  onOpenComposeBox = (isOpenState) => { //TODO - OTHER NAME?
     if (isOpenState) this.setState({ isComposedBoxOpen: true })
     else this.setState({ isComposedBoxOpen: false })
+  }
+
+  onGetInboxUnreadMails() {
+    return mailService.getInboxUnreadMails()
   }
 
   render() {
@@ -98,6 +102,7 @@ export class MailApp extends React.Component {
             folder={folder}
             onSetFolder={this.onSetFolder}
             onOpenComposeBox={this.onOpenComposeBox}
+            onGetInboxUnreadMails={this.onGetInboxUnreadMails}
           />
           <MailsList
             mails={mails}
@@ -108,7 +113,7 @@ export class MailApp extends React.Component {
             onSetActiveMail={this.onSetActiveMail}
           />
           {isComposedBoxOpen && (
-            <ComposeMailBox onOpenComposeBox={this.onOpenComposeBox} />
+            <ComposeMailBox onOpenComposeBox={this.onOpenComposeBox} loadMails={this.loadMails} />
           )}
         </main>
       </section>

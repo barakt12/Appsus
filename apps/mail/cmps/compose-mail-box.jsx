@@ -17,7 +17,7 @@ export class ComposeMailBox extends React.Component {
 
     componentDidMount() {
         this.setState({ draft: { id: utilService.makeId() } }, () => mailService.addDraftMail(this.state.draft))
-        this.intervalId = setInterval(this.onAutoSaveDraft, 5000)
+        this.intervalId = setInterval(this.onAutoSaveDraft, 3000)
     }
 
     componentWillUnmount() {
@@ -33,22 +33,31 @@ export class ComposeMailBox extends React.Component {
 
     onAutoSaveDraft = () => {
         mailService.autoSaveDraft(this.state.draft)
+        this.props.loadMails()
     }
 
     onSendMail = (ev) => {
         ev.preventDefault()
         mailService.sendMail(this.state.draft)
+        this.props.loadMails()
+        this.props.onOpenComposeBox(false)
+    }
+
+    onCloseComposeBox = () => {
+        mailService.autoSaveDraft(this.state.draft)
+        this.props.loadMails()
+        this.props.onOpenComposeBox(false)
     }
 
     render() {
         return <div className="compose-box-container">
             <div className="compose-title">
                 <span>New Message</span>
-                <span className="close-compose-btn" onClick={() => this.props.onOpenComposeBox(false)}>&times;</span>
+                <span className="close-compose-btn" onClick={this.onCloseComposeBox}>&times;</span>
             </div>
             <form className="compose-form" onSubmit={(ev) => console.log(ev.target[0].value)}>
                 <div className="compose-to">
-                    <textarea maxLength="55" placeholder="To" name="to" onChange={this.handleChange}></textarea>
+                    <textarea maxLength="55" placeholder="To" name="to" onChange={this.handleChange} required></textarea>
                 </div>
                 <div className="compose-subject">
                     <textarea maxLength="55" placeholder="Subject" name="subject" onChange={this.handleChange}></textarea>
