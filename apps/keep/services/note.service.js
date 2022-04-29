@@ -351,7 +351,6 @@ function togglePin(noteId) {
   note.isPinned = !note.isPinned
   sortByPinned(notes)
   _saveToStorage(notes)
-  console.log(notes)
   return Promise.resolve(notes)
 }
 function sortByPinned(notes) {
@@ -359,7 +358,8 @@ function sortByPinned(notes) {
     console.log(a, b)
     if (a.isPinned && !b.isPinned) {
       return -1
-    } else {
+    }
+    if (!a.isPinned && b.isPinned) {
       return 1
     }
   })

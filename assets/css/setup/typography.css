@@ -2,3 +2,8 @@
   font-family: open-sans;
   src: url('../../fonts/OpenSans/OpenSans-Regular.ttf');
 }
+
+@font-face {
+  font-family: monsterrat;
+  src: url(../../fonts/monsterrat/Montserrat-Bold.ttf);
+}

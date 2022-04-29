@@ -1,6 +1,7 @@
 .app-header {
   z-index: 20;
   position: relative;
+  font-size: 1.4rem;
   padding-left: 25px;
   padding-right: 25px;
   /* background-color: rgb(224, 224, 224); */
@@ -27,31 +28,74 @@ nav {
 }
 
 .openMenu {
+  box-sizing: content-box;
   display: flex;
-  flex-direction: column;
-  margin-left: 10px;
+  /* flex-direction: column; */
+  /* margin-left: 10px; */
+  flex-wrap: wrap;
+  width: 300px;
+  background-color: #fff;
   /* margin-right: 20px; */
+  /* padding: 6px; */
+  padding-left: 12px;
+  padding-top: 12px;
+  position: absolute;
+  right: 0;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  box-shadow: 0px 1px 2px 0px rgb(60 64 67 / 30%),
+    0px 2px 6px 2px rgb(60 64 67 / 15%);
+
   /* margin-top: 70px; */
 }
 
 .openMenu a {
-  width: 35px;
-  height: 35px;
-  font-size: 1.3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 6px;
+  margin: 6px;
   margin-bottom: 15px;
-  border-radius: 50px;
-  background-color: #cfcfd9;
+  width: 84px;
+  height: 84px;
+  border-radius: 8px;
+
   text-align: center;
   line-height: 35px;
+  font-size: 14px;
+  padding-top: 15px;
+}
+
+.openMenu a:hover {
+  background-color: #e8f0fe;
+  border: none;
 }
 
 .menu {
   position: absolute;
   right: 0;
-  margin-top: 15px;
+  margin-top: 25px;
   margin-right: 25px;
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   cursor: pointer;
   color: #5f6368;
+}
+
+.openMenu img {
+  /* width: 50%; */
+}
+
+.keep-img {
+  padding-top: 3px;
+  width: 40%;
+}
+
+.menu-keep span {
+  /* padding-top: 10px; */
+}
+
+.menu-book img {
+  width: 48px;
 }

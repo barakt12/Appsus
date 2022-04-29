@@ -68,7 +68,7 @@ export class NoteAdd extends React.Component {
     const value = ev.target.value
 
     this.setState((prevState) => ({ ...prevState, noteType: value }))
-    // this.inputRef.current.focus()
+    this.inputRef.current.focus()
   }
 
   render() {

@@ -25,14 +25,39 @@ class _AppHeader extends React.Component {
         <nav className=''>
           {isOpen && (
             <div className='openMenu'>
-              <NavLink to='/' exact className='fa-solid fa-house'></NavLink>
               <NavLink
-                to='/about'
-                className='fa-solid fa-circle-info'
-              ></NavLink>
-              <NavLink to='/book' className='fa-solid fa-book-open'></NavLink>
-              <NavLink to='/mail' className='fa-solid fa-envelope'></NavLink>
-              <NavLink to='/keep' className='fa-solid fa-sticky-note'></NavLink>
+                to='/'
+                exact
+                className='menu-home'
+                onClick={this.onToggleMenu}
+              >
+                <img className='home-img' src='./assets/img/home.png' />
+                <span>Home</span>
+              </NavLink>
+              <NavLink to='/about' onClick={this.onToggleMenu}>
+                <img src='./assets/img/about.png' className='about-img' />
+                <span>About</span>
+              </NavLink>
+              <NavLink
+                to='/keep'
+                className='menu-keep'
+                onClick={this.onToggleMenu}
+              >
+                <img src='./assets/img/keep.svg' className='keep-img' />
+                <span>Keep</span>
+              </NavLink>
+              <NavLink to='/mail' onClick={this.onToggleMenu}>
+                <img src='./assets/img/gmail.svg' className='gmail-img' />
+                <span>Mail</span>
+              </NavLink>
+              <NavLink
+                to='/book'
+                className='menu-book'
+                onClick={this.onToggleMenu}
+              >
+                <img src='./assets/img/book.png' />
+                <span>Book</span>
+              </NavLink>
             </div>
           )}
         </nav>

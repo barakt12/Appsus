@@ -61,10 +61,6 @@
   background-color: rgba(95, 99, 104, 0.157);
 }
 
-.pin-btn.image {
-  background-color: unset;
-}
-
 .note-preview:hover {
   box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
 }

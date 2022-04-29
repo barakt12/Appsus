@@ -22,12 +22,7 @@ export class About extends React.Component {
           <NavLink to='/about/team'>Team</NavLink>
           <NavLink to='/about/vision'>Vision</NavLink>
         </nav> */}
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
-          cupiditate sequi blanditiis dicta debitis mollitia nesciunt
-          consectetur quo atque aperiam totam eligendi, explicabo, nihil,
-          inventore earum obcaecati placeat voluptatum vero.
-        </p>
+        <h1>About Us</h1>
         <section>
           <Switch>
             <Route path='/about/team' component={Team} />
