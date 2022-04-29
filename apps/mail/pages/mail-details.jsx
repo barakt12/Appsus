@@ -1,5 +1,6 @@
 import { utilService } from '../../../services/util.service.js'
 import { mailService } from '../mail-service/mail-service.js'
+import { MailHeader } from '../cmps/mail-header.jsx'
 import { MailsSideBar } from '../cmps/mails-side-bar.jsx'
 import { ComposeMailBox } from '../cmps/compose-mail-box.jsx'
 const { Link } = ReactRouterDOM
@@ -65,24 +66,27 @@ export class MailDetails extends React.Component {
         const { subject, to, sentAt, body, } = this.state.mail
         const { folder, isComposedBoxOpen } = this.state
         const date = this.formattedDate(sentAt)
-        return <section className="mail-details-container">
-            <MailsSideBar
-                folder={folder}
-                onSetFolder={this.onSetFolder}
-                onOpenComposeBox={this.onOpenComposeBox}
-                onGetInboxUnreadMails={this.onGetInboxUnreadMails}
-            />
-            <main className="content-container">
-                <div className="mail-details-tools-container">
-                    <Link to={'/mail'} className="back-btn-mail-details"><i className="fa-solid fa-arrow-left"></i></Link>
-                    <span className="trash-container-mail-details" onClick={this.onDeleteMail}><img src="apps/mail/assets/img/delete-icon.png" /></span>
+        return <section >
+            <MailHeader onSetFilter={this.onSetFilter} />
+            <main className="mail-details-container">
+                <MailsSideBar
+                    folder={folder}
+                    onSetFolder={this.onSetFolder}
+                    onOpenComposeBox={this.onOpenComposeBox}
+                    onGetInboxUnreadMails={this.onGetInboxUnreadMails}
+                />
+                <div className="content-container">
+                    <div className="mail-details-tools-container">
+                        <Link to={'/mail'} className="back-btn-mail-details"><i className="fa-solid fa-arrow-left"></i></Link>
+                        <span className="trash-container-mail-details" onClick={this.onDeleteMail}><img src="apps/mail/assets/img/grey-delete-icon.png" /></span>
+                    </div>
+                    <div className="subject">{subject}</div>
+                    <div className="to-and-date-container">
+                        <span className="to">{to}</span>
+                        <span className="date">{date}</span>
+                    </div>
+                    <div className="body">{body}</div>
                 </div>
-                <div className="subject">{subject}</div>
-                <div className="to-and-date-container">
-                    <span className="to">{to}</span>
-                    <span className="date">{date}</span>
-                </div>
-                <div className="body">{body}</div>
             </main>
             {isComposedBoxOpen && <ComposeMailBox onOpenComposeBox={this.onOpenComposeBox} />}
         </section>

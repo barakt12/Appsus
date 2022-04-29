@@ -18,15 +18,15 @@ export function MailPreview({ props, mail }) {
   }
 
   return (<article className={`preview-container ${isActiveMailClassName}`} onClick={() => onSetActiveMail(id)}>
-    <span className={`star ${starClass}`} onClick={(ev) => onToggleMarkMail(ev, id)}>{star}</span>
+    <div className={`star ${starClass}`} onClick={(ev) => onToggleMarkMail(ev, id)}>{star}</div>
     <span className={`mailAddress ${readingClassName}`}>{to}</span>
     <div className="content">
       <span className={`subject ${readingClassName} ${isActiveMailClassName}`}>{`${subject}`}</span>
       <span className={`body ${isActiveMailClassName}`}>{body}</span>
     </div>
     <span className={`mail-date ${readingClassName}`}>{date}</span>
-    <div className="trash-container" onClick={(ev) => onDeleteMail(ev, id)}><img src="apps/mail/assets/img/delete-icon.png" /></div>
-    <div className="reading-container" onClick={(ev) => onToggleReadMail(ev, id)}><img src={`apps/mail/assets/img/${readingClassName}-mail-icon.png`} /></div>
+    <div className="trash-container" onClick={(ev) => onDeleteMail(ev, id)}><img src="apps/mail/assets/img/grey-delete-icon.png" /></div>
+    <div className="reading-container" onClick={(ev) => onToggleReadMail(ev, id)}><img src={`apps/mail/assets/img/grey-${readingClassName}-mail-icon.png`} /></div>
     <Link className="full-screen-container" to={`/mail/${id}`} ><img src="apps/mail/assets/img/full-screen-icon.png" /></Link>
   </article>
   )

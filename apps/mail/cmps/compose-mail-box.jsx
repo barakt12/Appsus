@@ -74,8 +74,8 @@ export class ComposeMailBox extends React.Component {
                     <textarea name="body" onChange={this.handleChange}></textarea>
                 </div>
                 <div className="compose-tools">
-                    <button onClick={(ev) => this.onSendMail(ev)}>Send</button>
-                    <img className="delete-draft-btn" src="apps/mail/assets/img/delete-icon.png" onClick={this.onDeleteDraft} />
+                    <button className="send-btn" onClick={(ev) => this.onSendMail(ev)}>Send</button>
+                    <img className="delete-draft-btn" src="apps/mail/assets/img/grey-delete-icon.png" onClick={this.onDeleteDraft} />
                 </div>
             </form>
 

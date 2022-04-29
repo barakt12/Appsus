@@ -110,6 +110,14 @@
     margin-left: 5px;
 }
 
+.compose-tools .send-btn:hover {
+    opacity: 85%;
+}
+
 .compose-tools .delete-draft-btn {
     cursor: pointer;
+}
+
+.compose-tools .delete-draft-btn:hover {
+    content: url("../img/delete-icon.png");
 }

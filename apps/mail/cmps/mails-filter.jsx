@@ -1,7 +1,6 @@
 export class MailsFilter extends React.Component {
   state = {
     filterBy: {
-      isRead: '', // TODO
       searchInp: '',
     },
   }
@@ -20,17 +19,18 @@ export class MailsFilter extends React.Component {
     const { searchInp } = this.state
 
     return (
-      <div className='mail-filter-box-container'>
-        <form>
-          <input
-            type='text'
-            placeholder='Search mail'
-            name='searchInp'
-            value={searchInp}
-            onChange={this.handleChange}
-          />
-        </form>
-      </div>
+
+      <form className='mail-filter-box-container'>
+
+        <input
+          type='text'
+          placeholder='Search mail'
+          name='searchInp'
+          value={searchInp}
+          onChange={this.handleChange}
+        />
+      </form>
+
     )
   }
 }

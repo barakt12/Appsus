@@ -129,12 +129,10 @@ function query(filterBy) {
     }
 
     if (filterBy) {
-        let { isRead, searchInp } = filterBy
+        let { searchInp } = filterBy
         mails = mails.filter(mail => {
-            if (isRead !== false && !isRead) isRead = mail.isRead
             return (
-                mail.subject.toLowerCase().includes(searchInp.toLowerCase()) || mail.body.toLowerCase().includes(searchInp.toLowerCase()) &&
-                mail.isRead === isRead)
+                mail.subject.toLowerCase().includes(searchInp.toLowerCase()) || mail.body.toLowerCase().includes(searchInp.toLowerCase()))
         })
     }
 
@@ -142,7 +140,6 @@ function query(filterBy) {
 }
 
 function getMailById(mailId) {
-    console.log('IN')
     const mails = _loadMailsFromStorage() || gMailsToDisplay
     const mail = mails.find(mail => mail.id === mailId)
     return Promise.resolve(mail)
@@ -191,7 +188,6 @@ function toggleReadMail(mailId, isRead) {
     return getMailById(mailId).then(mail => {
         if (isRead) {
             mail.isRead = true
-            console.log(mail)
         }
         else { mail.isRead = !mail.isRead }
         updateMail(mail)

@@ -25,6 +25,11 @@
     cursor: pointer;
 }
 
+.side-bar .compose-container:hover {
+    box-shadow: rgba(60, 64, 67, 0.438) 0px 1px 2px 0px, rgba(60, 64, 67, 0.438) 0px 1px 9px 1px;
+    background-color: rgba(60, 64, 67, 0.027);
+}
+
 .side-bar .compose-img {
     width: 32px;
     height: 32px;
@@ -70,9 +75,12 @@
     text-align: left;
 }
 
-.side-bar .folders-container .content.inbox-content.active {
+.side-bar .inbox-folder.active .content.inbox-content {
     color: #d93025;
-    font-weight: 700;
+}
+
+.side-bar .inbox-folder.active .inbox-img {
+    content: url("../img/inbox-icon.png");
 }
 
 .side-bar .folder.active:not(.inbox-folder) {
@@ -80,6 +88,10 @@
     border-start-end-radius: 25px;
     border-end-end-radius: 25px;
     padding-right: 1rem;
+}
+
+.side-bar .folder.active .content {
+    font-weight: 700;
 }
 
 .side-bar .folder:hover:not(.active) {
