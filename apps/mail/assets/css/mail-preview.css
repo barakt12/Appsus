@@ -7,8 +7,10 @@
     padding-bottom: 0;
     padding-top: 0;
     padding: 15px;
-    width: calc(77vw - 30px);
-    font-size: 0.8rem;
+    margin-left: 21px;
+    width: calc(65vw - 30px);
+    font-size: 13px;
+    position: relative;
     cursor: pointer;
 }
 
@@ -111,7 +113,8 @@
     right: 10px;
     display: flex;
     justify-content: flex-end;
-    padding-right: 30px;
+    padding-right: 0;
+    margin-right: 30px;
 }
 
 .preview-container .mailAddress.unread,
@@ -235,15 +238,23 @@
 
 /* // MQ */
 
+@media (min-width: 480px) {
+    .preview-container {
+        width: calc(73vw - 30px);
+    }
+}
+
 @media (min-width: 630px) {
     .preview-container {
         width: calc(98vw - 16.25rem);
         padding-bottom: 10px;
         padding-top: 10px;
+        position: relative;
+        margin-left: unset;
     }
 
     .preview-container .content {
-        max-width: calc(70vw - 16.25rem);
+        max-width: calc(65vw - 14.25rem);
     }
 }
 

@@ -49,7 +49,7 @@
 
 .mail-details-container .subject {
     font-weight: 700;
-    font-size: 1.2rem;
+    font-size: 19px;
     height: 70px;
     display: flex;
     align-items: center;
@@ -59,7 +59,7 @@
 .mail-details-container .to-and-date-container {
     display: flex;
     justify-content: space-between;
-    font-size: 0.875rem;
+    font-size: 14px;
     box-shadow: inset 0 -1px 0 0 #dadce094;
     padding-bottom: 5px;
     margin-left: 30px;
@@ -73,7 +73,7 @@
     max-width: 700px;
     margin-left: 30px;
     margin-top: 10px;
-    font-size: 0.875rem;
+    font-size: 14px;
     line-height: 23px;
     white-space: pre-wrap;
 }

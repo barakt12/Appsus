@@ -1,15 +1,15 @@
 .mail-filter-box-container {
     height: 46px;
-    width: 680px;
+    width: 45%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font: 0.8125rem/1.6875rem;
+    font: 13px/27px;
     background-color: #f1f3f4;
     border-radius: 7px;
     line-height: 1.6875px;
     position: absolute;
-    left: 267px;
+    left: 137px;
     top: 50%;
     transform: translate(0, -50%);
     padding-left: 10px;
@@ -19,7 +19,7 @@
 .mail-filter-box-container input {
     width: 80%;
     height: 100%;
-    font-size: 1rem;
+    font-size: 16px;
     background: none;
     border: none;
 }
@@ -31,4 +31,30 @@
 .mail-filter-box-container img {
     width: 25px;
     height: 25px;
+}
+
+/* // MQ */
+
+@media (min-width: 630px) {
+    .mail-filter-box-container {
+        left: 267px;
+    }
+}
+
+@media (min-width: 730px) {
+    .mail-filter-box-container {
+        width: 48%;
+    }
+}
+
+@media (min-width: 775px) {
+    .mail-filter-box-container {
+        width: 55%;
+    }
+}
+
+@media (min-width: 1020px) {
+    .mail-filter-box-container {
+        width: 680px;
+    }
 }

@@ -40,13 +40,6 @@ export class MailDetails extends React.Component {
         return mailService.getInboxUnreadMails()
     }
 
-    formattedDate = (timeStamp) => {
-        const date = new Date(timeStamp)
-        const day = date.getDate()
-        const month = utilService.getMonthName(date)
-        return `${month} ${day}`
-    }
-
     onDeleteMail = () => {
         const { id } = this.state.mail
         mailService.deleteMail(id).then(this.props.history.push('/mail'))
@@ -65,7 +58,7 @@ export class MailDetails extends React.Component {
         if (!this.state.mail || !this.state.folder) return <React.Fragment></React.Fragment>
         const { subject, to, sentAt, body, } = this.state.mail
         const { folder, isComposedBoxOpen } = this.state
-        const date = this.formattedDate(sentAt)
+        const date = utilService.formatTime(sentAt)
         return <section >
             <MailHeader onSetFilter={this.onSetFilter} />
             <main className="mail-details-container">
