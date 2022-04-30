@@ -154,6 +154,10 @@ img[src='./assets/img/about.png'] {
   font-size: 0.95rem;
 }
 
+.appsus {
+  background-color: #f1f1f1;
+}
+
 @media (min-width: 400px) {
   .app-header .mail-filter-box-container {
     width: 45%;
