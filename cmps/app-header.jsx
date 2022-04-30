@@ -34,7 +34,9 @@ class _AppHeader extends React.Component {
         <img
           src={`./assets/img/${
             pageName === 'Appsus' ? 'home' : pageName
-          }.${fileEnding}`}
+          }.${
+            pageName === 'about' ? 'png' : fileEnding
+          }`}
           className='keep-header'
         />
         <h3>{pageName[0].toUpperCase() + pageName.slice(1)}</h3>
