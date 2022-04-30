@@ -1,6 +1,7 @@
 .mail-filter-box-container {
     height: 46px;
     width: 45%;
+    max-width: 720px;
     display: flex;
     justify-content: space-between;
     align-items: center;
