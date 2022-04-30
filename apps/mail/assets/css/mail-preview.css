@@ -93,7 +93,7 @@
     min-width: max-content;
 }
 
-.preview-container .subject:not(.active):not(.draft):after {
+.preview-container .subject:not(.active):not(:empty):after {
     content: " - ";
 }
 
@@ -104,6 +104,7 @@
     overflow: hidden;
     letter-spacing: .3px;
     color: rgba(0, 0, 0, 0.603);
+    padding-left: 5px;
 }
 
 .preview-container .mailAddress {

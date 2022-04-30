@@ -56,7 +56,7 @@ export class MailDetails extends React.Component {
 
     render() {
         if (!this.state.mail || !this.state.folder) return <React.Fragment></React.Fragment>
-        const { subject, to, sentAt, body, } = this.state.mail
+        const { subject, to, from, sentAt, body, } = this.state.mail
         const { folder, isComposedBoxOpen } = this.state
         const date = utilService.formatTime(sentAt)
         return <section >
@@ -77,7 +77,8 @@ export class MailDetails extends React.Component {
                         <div className="subject">{subject}</div>
                         <span className="date">{date}</span>
                     </div>
-                    <span className="to">{to}</span>
+                    <span className="to">to: <span>{to}</span></span>
+                    <span className="from">from: <span>{from}</span></span>
                     <div className="body">{body}</div>
                 </div>
             </main>

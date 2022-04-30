@@ -60,12 +60,19 @@
     margin-left: 30px;
 }
 
-.mail-details-container .to {
+.mail-details-container .to,
+.mail-details-container .from {
     display: flex;
     font-size: 14px;
     padding-bottom: 7px;
     margin-left: 30px;
     font-weight: 600;
+}
+
+.mail-details-container .to span,
+.mail-details-container .from span {
+    margin-left: 15px;
+    font-weight: 500;
 }
 
 .sub-and-date-container {

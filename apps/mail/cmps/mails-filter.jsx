@@ -17,9 +17,7 @@ export class MailsFilter extends React.Component {
 
   render() {
     const { searchInp } = this.state
-
     return (
-
       <form className='mail-filter-box-container'>
         <img className="search-icon" src="apps/mail/assets/img/search-icon.png"></img>
         <input
