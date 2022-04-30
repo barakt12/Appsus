@@ -4,18 +4,11 @@ const { Link } = ReactRouterDOM
 export function MailPreview({ props, mail }) {
   const { activeMail, onToggleMarkMail, onDeleteMail, onToggleReadMail, onSetActiveMail } = props
   const { to, subject, sentAt, body, isMarked, isRead, id } = mail
-  const date = formattedDate(sentAt)
+  const date = utilService.formatTime(sentAt)
   const star = isMarked ? '★' : '☆'
   const starClass = isMarked ? 'marked' : ''
   const readingClassName = isRead ? 'read' : 'unread'
   const isActiveMailClassName = activeMail === id ? 'active' : ''
-
-  function formattedDate(timeStamp) {
-    const date = new Date(timeStamp)
-    const day = date.getDate()
-    const month = utilService.getMonthName(date)
-    return `${month} ${day}`
-  }
 
   return (<article className={`preview-container ${isActiveMailClassName}`} onClick={() => onSetActiveMail(id)}>
     <div className={`star ${starClass}`} onClick={(ev) => onToggleMarkMail(ev, id)}>{star}</div>

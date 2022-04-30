@@ -1,14 +1,16 @@
 .preview-container {
     display: flex;
-    /* justify-content: space-between; */
+    flex-direction: column;
     align-items: center;
-    height: 40px;
+    height: 130px;
     box-shadow: rgba(100, 121, 143, 0.12) 0px -1px 0px 0px inset;
-    padding-bottom: 10px;
-    padding-top: 10px;
+    padding-bottom: 0;
+    padding-top: 0;
     padding: 15px;
-    width: calc(98vw - 16.25rem);
-    font-size: 0.8rem;
+    margin-left: 21px;
+    width: calc(65vw - 30px);
+    font-size: 13px;
+    position: relative;
     cursor: pointer;
 }
 
@@ -55,6 +57,7 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    align-self: flex-start;
 }
 
 .preview-container .star:hover {
@@ -67,14 +70,22 @@
 }
 
 .preview-container .content {
-    width: 70%;
     overflow: hidden;
+    max-width: calc(100vw - 16.25rem);
+    display: flex;
+    align-self: flex-start;
 }
 
 .preview-container .subject {
     overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    letter-spacing: .3px;
+}
+
+
+.preview-container .subject:not(.active) {
+    min-width: max-content;
 }
 
 .preview-container .subject:not(.active)::after {
@@ -86,10 +97,14 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    letter-spacing: .3px;
+    color: rgba(0, 0, 0, 0.603);
 }
 
 .preview-container .mailAddress {
-    width: 15%;
+    flex-basis: 15%;
+    min-width: 116px;
+    align-self: flex-start;
 }
 
 .preview-container .mail-date {
@@ -98,7 +113,8 @@
     right: 10px;
     display: flex;
     justify-content: flex-end;
-    padding-right: 30px;
+    padding-right: 0;
+    margin-right: 30px;
 }
 
 .preview-container .mailAddress.unread,
@@ -199,14 +215,14 @@
 .preview-container.active .subject {
     position: absolute;
     left: 26px;
-    top: 20px;
+    top: 30px;
     font-size: 16px;
     font-weight: 700;
 }
 
 .preview-container.active .mailAddress {
     position: absolute;
-    top: 45px;
+    top: 55px;
     left: 19px;
 }
 
@@ -214,8 +230,54 @@
     position: absolute;
     left: 27px;
     transform: translate(-50%);
-    top: 85px;
+    top: 95px;
     white-space: pre-wrap;
     transform: translate(0);
     line-height: 20px;
+}
+
+/* // MQ */
+
+@media (min-width: 480px) {
+    .preview-container {
+        width: calc(73vw - 30px);
+    }
+}
+
+@media (min-width: 630px) {
+    .preview-container {
+        width: calc(98vw - 16.25rem);
+        padding-bottom: 10px;
+        padding-top: 10px;
+        position: relative;
+        margin-left: unset;
+    }
+
+    .preview-container .content {
+        max-width: calc(65vw - 14.25rem);
+    }
+}
+
+@media (min-width: 950px) {
+    .preview-container {
+        flex-direction: unset;
+        height: 40px;
+    }
+
+    .preview-container .star {
+        align-self: center;
+
+    }
+
+    .preview-container .content {
+        display: unset;
+    }
+
+    .preview-container .mailAddress {
+        align-self: unset;
+    }
+
+    .preview-container .content {
+        align-self: unset;
+    }
 }

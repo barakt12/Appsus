@@ -1,14 +1,14 @@
 .mail-header {
     height: 64px;
-    font-size: 0.8125rem;
-    line-height: 1.6875rem;
+    font-size: 13px;
+    line-height: 27px;
     margin-bottom: 12px;
     position: relative;
     box-shadow: inset 0 -1px 0 0 #dadce0;
 }
 
 .mail-header .mail-header-btns {
-    width: 10.5rem;
+    width: 168px;
 }
 
 .mail-header .logo-container {

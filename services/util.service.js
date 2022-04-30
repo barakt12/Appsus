@@ -5,7 +5,7 @@ export const utilService = {
   getRandomColor,
   padNum,
   getDayName,
-  getMonthName,
+  formatTime,
   getCurrency,
   debounce,
 }
@@ -129,4 +129,24 @@ function getMonthName(date) {
     'Dec',
   ]
   return monthNames[date.getMonth()]
+}
+
+function formatTime(time) {
+  const minute = 1000 * 60
+  const now = Date.now()
+  const diff = now - time
+  if (diff < minute) return 'Just now'
+  if (diff < minute * 60 * 24) return 'Today'
+  if (diff < minute * 60 * 24 * 2) return 'Yesterday'
+  // if (diff > minute * 60 * 24 * 365) return 'archive'
+
+  const res = getFormattedTime(time)
+  return res
+}
+
+function getFormattedTime(time) {
+  const newDate = new Date(time)
+  const month = getMonthName(newDate)
+  const date = newDate.getDate()
+  return `${month} ${date}`
 }
