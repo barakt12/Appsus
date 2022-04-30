@@ -70,7 +70,7 @@ export class KeepApp extends React.Component {
   }
 
   render() {
-    const { notes, selectedNote } = this.state
+    const { notes } = this.state
     return (
       <React.Fragment>
         <AppHeader pageName='keep' fileEnding='svg' />
@@ -82,6 +82,7 @@ export class KeepApp extends React.Component {
             onDuplicateNote={this.onDuplicateNote}
             onPinNote={this.onPinNote}
           />
+
           <Screen />
         </section>
       </React.Fragment>

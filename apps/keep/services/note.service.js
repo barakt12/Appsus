@@ -6,7 +6,6 @@ const KEY = 'noteDB'
 export const noteService = {
   query,
   getNoteById,
-  createNote,
   updateNoteText,
   addNote,
   changeNoteColor,
@@ -18,7 +17,38 @@ export const noteService = {
 
 function query(filterBy) {
   let notes = _loadFromStorage() || _createNotes()
+  notes = _sortByPinned(notes)
+  notes = notes.map((note) => {
+    if (note.type !== 'note-todos') return note
+    else {
+      const sortedTodos = _sortByChecked(note.info.todos)
+      note.info.todos = sortedTodos
+      return note
+    }
+  })
+  if (filterBy) {
+    filterBy = filterBy.toLowerCase()
+    const filteredNotes = notes.filter((note) => {
+      if (note.type === 'note-todos')
+        return (
+          note.info.title.toLowerCase().includes(filterBy) ||
+          _filterTodos(note.info.todos, filterBy)
+        )
+      else {
+        return note.info.title
+          ? note.info.title.toLowerCase().includes(filterBy)
+          : '' || note.info.txt
+          ? note.info.txt.toLowerCase().includes(filterBy)
+          : ''
+      }
+    })
+    return Promise.resolve(filteredNotes)
+  }
   return Promise.resolve(notes)
+}
+
+function _filterTodos(todos, filterBy) {
+  return todos.some((todo) => todo.txt.toLowerCase().includes(filterBy))
 }
 
 function getNoteById(id) {
@@ -116,6 +146,7 @@ function _createNotes() {
         backgroundColor: '#F28B82',
       },
     },
+
     {
       id: 'qE1Rby',
       type: 'note-todos',
@@ -150,7 +181,7 @@ function _createNotes() {
     {
       id: 'svPO8T',
       type: 'note-todos',
-      isPinned: false,
+      isPinned: true,
       info: {
         title: 'Todo list for tomorrow',
         txt: '',
@@ -239,22 +270,6 @@ function _createNotes() {
   return notes
 }
 
-function createNote(type, info) {
-  let notes = _loadFromStorage()
-  const note = {
-    id: utilService.makeId(),
-    type,
-    isPinned,
-    info,
-    style: {
-      backgroundColor: '#fff',
-    },
-  }
-  notes.push(note)
-  _saveToStorage(notes)
-  return Promise.resolve()
-}
-
 function updateNoteText(updatedNote, inputText, inputTitle) {
   updatedNote.info.txt = inputText
   updatedNote.info.title = inputTitle
@@ -318,6 +333,7 @@ function deleteNote(noteId) {
   const notes = _loadFromStorage()
   const idx = notes.findIndex((note) => note.id === noteId)
   notes.splice(idx, 1)
+  _sortByPinned(notes)
   _saveToStorage(notes)
   return Promise.resolve(notes)
 }
@@ -331,7 +347,7 @@ function duplicateNote(noteId) {
   duplicateNote.id = utilService.makeId()
   duplicateNote.isPinned = false
   notes.unshift(duplicateNote)
-  sortByPinned(notes)
+  _sortByPinned(notes)
   _saveToStorage(notes)
   return Promise.resolve(notes)
 }
@@ -341,6 +357,7 @@ function toggleTodoCheck(idx, noteId) {
   const note = notes.find((note) => noteId === note.id)
   const todos = note.info.todos
   todos[idx].isChecked = !todos[idx].isChecked
+  _sortByChecked(todos)
   _saveToStorage(notes)
   return Promise.resolve(todos)
 }
@@ -349,17 +366,27 @@ function togglePin(noteId) {
   const notes = _loadFromStorage()
   const note = notes.find((note) => noteId === note.id)
   note.isPinned = !note.isPinned
-  sortByPinned(notes)
+  _sortByPinned(notes)
   _saveToStorage(notes)
   return Promise.resolve(notes)
 }
-function sortByPinned(notes) {
+function _sortByPinned(notes) {
   return notes.sort((a, b) => {
-    console.log(a, b)
     if (a.isPinned && !b.isPinned) {
       return -1
     }
     if (!a.isPinned && b.isPinned) {
+      return 1
+    }
+  })
+}
+
+function _sortByChecked(todos) {
+  return todos.sort((a, b) => {
+    if (!a.isChecked && b.isChecked) {
+      return -1
+    }
+    if (!a.isChecked && b.isChecked) {
       return 1
     }
   })

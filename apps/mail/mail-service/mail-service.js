@@ -259,9 +259,11 @@ function query(filterBy) {
 
     if (filterBy) {
         let { searchInp } = filterBy
-        mails = mails.filter(mail => {
+        mails = mails.filter((mail) => {
             return (
-                mail.subject.toLowerCase().includes(searchInp.toLowerCase()) || mail.body.toLowerCase().includes(searchInp.toLowerCase()))
+                mail.subject.toLowerCase().includes(searchInp.toLowerCase()) ||
+                mail.body.toLowerCase().includes(searchInp.toLowerCase())
+            )
         })
     }
 
@@ -270,7 +272,7 @@ function query(filterBy) {
 
 function getMailById(mailId) {
     const mails = _loadMailsFromStorage() || gMailsToDisplay
-    const mail = mails.find(mail => mail.id === mailId)
+    const mail = mails.find((mail) => mail.id === mailId)
     return Promise.resolve(mail)
 }
 
@@ -294,7 +296,7 @@ function addDraftMail(draft) {
 }
 
 function autoSaveDraft(newDraft) {
-    getMailById(newDraft.id).then(draft => {
+    getMailById(newDraft.id).then((draft) => {
         draft.subject = newDraft.subject || ''
         draft.body = newDraft.body || ''
         draft.sentAt = Date.now() || ''
@@ -315,7 +317,7 @@ function sendMail(newMail) {
 }
 
 function toggleMarkMail(mailId) {
-    return getMailById(mailId).then(mail => {
+    return getMailById(mailId).then((mail) => {
         mail.isMarked = !mail.isMarked
         updateMail(mail)
         return Promise.resolve(mail)
@@ -323,25 +325,26 @@ function toggleMarkMail(mailId) {
 }
 
 function toggleReadMail(mailId, isRead) {
-    return getMailById(mailId).then(mail => {
+    return getMailById(mailId).then((mail) => {
         if (isRead) {
             mail.isRead = true
+        } else {
+            mail.isRead = !mail.isRead
         }
-        else { mail.isRead = !mail.isRead }
         updateMail(mail)
         return Promise.resolve(mail)
     })
 }
 
 function deleteMail(mailId) {
-    return getMailById(mailId).then(mail => {
+    return getMailById(mailId).then((mail) => {
         if (!mail.isTrash) {
             mail.isTrash = true
             updateMail(mail)
             return Promise.resolve(mail)
         } else {
             let mails = _loadMailsFromStorage() || gMailsToDisplay
-            mails = mails.filter(mail => mail.id !== mailId)
+            mails = mails.filter((mail) => mail.id !== mailId)
             _saveMailsToStorage(mails)
             return Promise.resolve(mails)
         }
@@ -351,7 +354,9 @@ function deleteMail(mailId) {
 function getInboxUnreadMails() {
     const mails = _loadMailsFromStorage() || gMailsToDisplay
     let count = 0
-    mails.forEach(mail => { if (!mail.isRead && mail.to === getLoggedInUserMail()) count++ })
+    mails.forEach((mail) => {
+        if (!mail.isRead && mail.to === getLoggedInUserMail()) count++
+    })
     return count
 }
 

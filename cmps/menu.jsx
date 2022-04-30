@@ -1,4 +1,4 @@
-const { NavLink } = ReactRouterDOM
+const { Link, NavLink, withRouter } = ReactRouterDOM
 
 export function Menu({ onToggleMenu }) {
   return (
