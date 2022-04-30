@@ -23,7 +23,7 @@
   top: 0px;
   /* left: 69%; */
   /* top: 40%; */
-  color: rgb(42, 42, 42);
+  color: #2a2a2a;
   left: 3%
 }
 
@@ -37,6 +37,7 @@
   position: relative;
   /* word-spacing: -40px; */
   /* letter-spacing: -5px; */
+  left: 3%
 }
 
 .home span {
