@@ -300,4 +300,7 @@
     .preview-container .content {
         align-self: unset;
     }
+    
+    .preview-container .subject {
+        margin-left: 20px;
 }
