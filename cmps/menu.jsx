@@ -1,4 +1,4 @@
-const { Link, NavLink, withRouter } = ReactRouterDOM
+const { NavLink } = ReactRouterDOM
 
 export function Menu({ onToggleMenu }) {
   return (
@@ -9,7 +9,7 @@ export function Menu({ onToggleMenu }) {
         className='menu-home'
         onClick={() => onToggleMenu()}
       >
-        <img className='home-img' src='./assets/img/home.png' />
+        <img className='home-img' src='./assets/img/homemenu.png' />
         <span>Home</span>
       </NavLink>
       <NavLink to='/about' onClick={() => onToggleMenu()}>
@@ -23,10 +23,6 @@ export function Menu({ onToggleMenu }) {
       <NavLink to='/mail' onClick={() => onToggleMenu()}>
         <img src='./assets/img/gmail.svg' className='gmail-img' />
         <span>Mail</span>
-      </NavLink>
-      <NavLink to='/book' className='menu-book' onClick={() => onToggleMenu()}>
-        <img src='./assets/img/book.png' />
-        <span>Book</span>
       </NavLink>
     </div>
   )

@@ -1,11 +1,12 @@
 .note-add {
-  width: 598px;
+  width: 250px;
   z-index: 10;
   border: 1px solid transparent;
   border-radius: 8px;
+  line-height: 50px;
   box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
   /* margin: 20px; */
-  margin: 32px auto 16px auto;
+  margin: 32px auto 32px auto;
   background-color: #fff;
   position: relative;
 }
@@ -76,15 +77,14 @@
   display: flex;
   justify-content: space-between;
   /* width: 150px; */
-  right: 20px;
-  top: 5px;
+  right: 50px;
+  top: 60px;
   position: absolute;
 }
 
 .type-btns > * {
   border: none;
-  color: rgb(76, 76, 76);
-
+  color: rgb(114 114 114);
   font-size: 1rem;
   cursor: pointer;
   width: 40px;
@@ -96,4 +96,55 @@
 .type-btns > *:hover {
   opacity: 0.87;
   background-color: rgba(95, 99, 104, 0.157);
+  color: rgb(24, 24, 24);
 }
+
+@media (min-width: 420px) {
+  .note-add {
+    width: 300px;
+  }
+  .type-btns {
+    right: 20px;
+    top: 5px;
+  }
+}
+
+@media (min-width: 520px) {
+  .note-add {
+    width: 420px;
+  }
+}
+
+@media (min-width: 800px) {
+  .note-add {
+    width: 500px;
+  }
+}
+
+@media (min-width: 900px) {
+  .note-add {
+    width: 598px;
+  }
+}
+
+/* .type-btns {
+  display: flex;
+  justify-content: space-between;
+  right: 20px;
+  top: 5px;
+  position: absolute;
+} */
+
+/* 
+.note-add {
+  width: 250px;
+  z-index: 10;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+  
+  margin: 32px auto 16px auto; //!!!!!!!!
+
+  background-color: #fff;
+  position: relative;
+} */

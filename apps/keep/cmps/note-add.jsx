@@ -57,9 +57,7 @@ export class NoteAdd extends React.Component {
   onExpandInput = (ev, isOpen) => {
     if (ev.relatedTarget) return
 
-    this.setState({ isActive: isOpen }, () => {
-      eventBusService.emit('toggleScreen', isOpen)
-    })
+    this.setState({ isActive: isOpen })
   }
 
   onChangeType = (ev) => {

@@ -11,14 +11,6 @@ export class NoteTodos extends React.Component {
     this.setState({ todos })
   }
 
-  handleChange = ({ target }, todo) => {
-    const { value } = target.value
-    const { todos } = this.state
-    const idx = todos.indexOf(todo)
-    todos[idx].txt = value
-    this.setState({ todos })
-  }
-
   onToggleCheck = (todoIdx, noteId) => {
     noteService
       .toggleTodoCheck(todoIdx, noteId)
@@ -41,14 +33,23 @@ export class NoteTodos extends React.Component {
             onClick={(ev) => this.props.onPin(ev, this.props.note.id)}
           ></button>
           {todos.map((todo, idx) => (
-            <li key={idx}>
+            <li
+              key={idx}
+              className={`${
+                todos[idx + 1]
+                  ? todos[idx + 1].isChecked && !todo.isChecked && 'seperator'
+                  : ''
+              }`}
+            >
               <button
                 className={`fa-regular fa-square${
                   todo.isChecked ? '-check' : ''
                 } checkbox`}
                 onClick={() => this.onToggleCheck(idx, note.id)}
               ></button>
-              <p className={todo.isChecked ? 'todo-checked' : ''}>{todo.txt}</p>
+              <p className={`${todo.isChecked ? 'todo-checked' : ''}`}>
+                {todo.txt}
+              </p>
             </li>
           ))}
         </ul>
