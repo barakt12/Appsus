@@ -278,6 +278,10 @@
         left: unset;
     }
 
+    .preview-container {
+        margin-left: 20px;
+    }
+
     .preview-container .star {
         align-self: center;
 
