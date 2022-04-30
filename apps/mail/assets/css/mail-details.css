@@ -5,7 +5,7 @@
 }
 
 .mail-details-container .content-container {
-    width: calc(95vw - 16.25rem);
+    width: calc(84vw - 30px);
     margin-top: 54px;
 }
 
@@ -76,4 +76,12 @@
     font-size: 0.875rem;
     line-height: 23px;
     white-space: pre-wrap;
+}
+
+/* // MQ */
+
+@media (min-width: 630px) {
+    .mail-details-container .content-container {
+        width: calc(95vw - 16.25rem);
+    }
 }

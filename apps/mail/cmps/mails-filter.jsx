@@ -21,7 +21,7 @@ export class MailsFilter extends React.Component {
     return (
 
       <form className='mail-filter-box-container'>
-
+        <img className="search-icon" src="apps/mail/assets/img/search-icon.png"></img>
         <input
           type='text'
           placeholder='Search mail'
@@ -29,6 +29,7 @@ export class MailsFilter extends React.Component {
           value={searchInp}
           onChange={this.handleChange}
         />
+        <img className="search-icon" src="apps/mail/assets/img/search-bar-icon.png"></img>
       </form>
 
     )

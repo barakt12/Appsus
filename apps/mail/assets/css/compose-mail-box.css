@@ -1,6 +1,6 @@
 .compose-box-container {
     height: 470px;
-    width: 510px;
+    width: 70%;
     display: flex;
     flex-direction: column;
     border-start-end-radius: 8px;
@@ -120,4 +120,12 @@
 
 .compose-tools .delete-draft-btn:hover {
     content: url("../img/delete-icon.png");
+}
+
+/* // MQ */
+
+@media (min-width: 630px) {
+    .compose-box-container {
+        width: 510px;
+    }
 }
