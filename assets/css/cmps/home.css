@@ -16,15 +16,17 @@
   width: 100%;
   object-fit: cover;
 }
+
 .home h1:nth-child(2) {
   font-size: 4rem;
   width: 500px;
-  left: 4%;
-  top: 220px;
+  top: 0px;
   /* left: 69%; */
   /* top: 40%; */
   color: rgb(42, 42, 42);
+  left: 3%
 }
+
 .home h1 {
   /* text-shadow: #aaa 0px 0px 1px, #aaa 0px 0px 1px, #aaa 0px 0px 1px,
     #aaa 0px 0px 1px, #aaa 0px 0px 1px, #aaa 0px 0px 1px; */
@@ -38,7 +40,7 @@
 }
 
 .home span {
-  color: #ffffff;
+  color: #E9C04D;
 }
 
 .welcome {
