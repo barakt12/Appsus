@@ -5,7 +5,7 @@ export class Screen extends React.Component {
   }
 
   componentDidMount() {
-    eventBusService.on('toggleScreen', (isActive) => {
+    eventBusService.on('screen', (isActive) => {
       this.setState({ isActive: isActive })
     })
   }

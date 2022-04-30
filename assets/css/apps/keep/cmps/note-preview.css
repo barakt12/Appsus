@@ -127,6 +127,8 @@
 
 .todos-container li {
   display: flex;
+  margin-top: 8px;
+  margin-bottom: 6px;
 }
 
 .todos-container li p {
@@ -135,6 +137,12 @@
 
 .todo-checked {
   text-decoration: line-through;
+  color: #5f6368;
+}
+
+.seperator {
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.194);
 }
 
 .checkbox {
@@ -148,7 +156,7 @@
   border: none;
   background-color: unset;
   font-size: 16px;
-  color: #2e2e2e;
+  color: #4e4e4e;
 }
 
 .checkbox:hover {

@@ -107,4 +107,55 @@ nav {
   width: 40px;
   height: 44px;
   padding-right: 10px;
+  position: relative;
+  left: 5px;
+}
+
+.app-header h3 {
+  padding-left: 5px;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.search-btn {
+  border: none;
+  outline: none;
+  height: 35px;
+  width: 35px;
+  font-size: 1.15rem;
+  border-radius: 50px;
+  background-color: unset;
+}
+
+.search-btn:hover {
+  opacity: 0.87;
+  background-color: rgba(95, 99, 104, 0.157);
+}
+
+img[src='./assets/img/home.png'] {
+  width: unset;
+}
+
+img[src='./assets/img/about.png'] {
+  width: unset;
+}
+
+.app-header .mail-filter-box-container input {
+  width: 94%;
+  padding-left: 10px;
+}
+
+.app-header .mail-filter-box-container {
+  width: 40%;
+}
+
+.app-header .mail-filter-box-container input::-webkit-input-placeholder {
+  font-family: open-sans;
+  font-size: 0.95rem;
+}
+
+@media (min-width: 400px) {
+  .app-header .mail-filter-box-container {
+    width: 45%;
+  }
 }

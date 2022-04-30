@@ -1,19 +1,46 @@
 import { noteService } from '../services/note.service.js'
-import { NoteFilter } from '../cmps/note-filter.jsx'
 import { NoteList } from '../cmps/note-list.jsx'
 import { NoteAdd } from '../cmps/note-add.jsx'
 import { Screen } from '../../../cmps/screen.jsx'
 import { AppHeader } from '../../../cmps/app-header.jsx'
+import { eventBusService } from '../../../services/event-bus.service.js'
 
 export class KeepApp extends React.Component {
   state = {
-    isPinnedNotes: false,
-    filterBy: null,
+    filterBy: '',
     notes: [],
+    selectedNote: null,
   }
 
   componentDidMount() {
-    this.loadNotes()
+    let searchQuery = new URLSearchParams(this.props.location.search).get(
+      'search'
+    )
+    if (!searchQuery) this.loadNotes()
+    this.setState(
+      (prevState) => ({ ...prevState, filterBy: searchQuery }),
+      this.loadNotes
+    )
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    let searchQuery = new URLSearchParams(this.props.location.search).get(
+      'search'
+    )
+    let prevSearch = new URLSearchParams(prevProps.location.search).get(
+      'search'
+    )
+    if (prevSearch !== searchQuery) {
+      this.setState(
+        (prevState) => ({ ...prevState, filterBy: searchQuery }),
+        this.loadNotes
+      )
+    }
+  }
+
+  onSelectNote = (noteId) => {
+    eventBusService.emit('screen', true)
+    this.setState((prevState) => ({ ...prevState, selectedNote: noteId }))
   }
 
   onPinNote = (ev, noteId) => {
@@ -36,8 +63,9 @@ export class KeepApp extends React.Component {
   }
 
   loadNotes = () => {
-    noteService.query().then((notes) => {
-      this.setState({ notes }, () => {})
+    const { filterBy } = this.state
+    noteService.query(filterBy).then((notes) => {
+      this.setState((prevState) => ({ ...prevState, notes }))
     })
   }
 
@@ -45,7 +73,7 @@ export class KeepApp extends React.Component {
     const { notes } = this.state
     return (
       <React.Fragment>
-        <AppHeader pageName='keep' />
+        <AppHeader pageName='keep' fileEnding='svg' />
         <section className='keep-app'>
           <NoteAdd loadNotes={this.loadNotes} />
           <NoteList
@@ -54,6 +82,7 @@ export class KeepApp extends React.Component {
             onDuplicateNote={this.onDuplicateNote}
             onPinNote={this.onPinNote}
           />
+
           <Screen />
         </section>
       </React.Fragment>

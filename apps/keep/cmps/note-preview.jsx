@@ -53,7 +53,9 @@ export class NotePreview extends React.Component {
     }
 
     const inlineStyle =
-      note.style.backgroundColor !== '#fff' && noteType !== 'note-img'
+      note.style.backgroundColor !== '#fff' &&
+      noteType !== 'note-img' &&
+      note.style.backgroundColor !== '#FFFFFF'
         ? { backgroundColor: note.style.backgroundColor }
         : {
             backgroundColor: note.style.backgroundColor,

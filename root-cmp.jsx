@@ -1,11 +1,8 @@
 import { Home } from './pages/home.jsx'
 import { About } from './pages/about.jsx'
-import { BookApp } from './apps/book/pages/book-app.jsx'
 import { KeepApp } from './apps/keep/pages/keep-app.jsx'
 import { MailApp } from './apps/mail/pages/mail-app.jsx'
 import { MailDetails } from './apps/mail/pages/mail-details.jsx'
-import { AppHeader } from './cmps/app-header.jsx'
-import { AppFooter } from './cmps/app-footer.jsx'
 const Router = ReactRouterDOM.HashRouter
 const { Route, Switch } = ReactRouterDOM
 export class App extends React.Component {
@@ -48,7 +45,6 @@ export class App extends React.Component {
             <Route path='/' component={Home} />
           </Switch>
         </section>
-        {/* <AppFooter /> */}
       </Router>
     )
   }
