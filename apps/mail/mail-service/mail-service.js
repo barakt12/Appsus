@@ -259,6 +259,15 @@ function getLoggedInUserMail() {
     return gLoggedInUser.email
 }
 
+function updateMail(currMail) {
+    query().then(mails => mails.map(mail => {
+        if (currMail.id === mail.id) return currMail
+        return mail
+    })).then(mails => {
+        _saveMailsToStorage(mails)
+    })
+}
+
 function addDraftMail(draft) {
     let mails = _loadMailsFromStorage() || gMailsToDisplay
     mails.unshift(_createDraft(draft))
@@ -276,14 +285,14 @@ function autoSaveDraft(newDraft) {
 }
 
 function sendMail(newMail) {
-    getMailById(newMail.id).then(mail => {
-        mail.subject = newMail.subject || ''
-        mail.body = newMail.body || ''
-        mail.sentAt = newMail.sentAt || ''
-        mail.to = newMail.to || 'UNKNOWN'
-        mail.isDraft = false
-        updateMail(mail)
-    })
+    const mails = _loadMailsFromStorage() || gMailsToDisplay
+    const idx = mails.findIndex(mail => mail.id === newMail.id)
+    mails[idx].subject = newMail.subject || ''
+    mails[idx].body = newMail.body || ''
+    mails[idx].sentAt = newMail.sentAt || ''
+    mails[idx].to = newMail.to || 'UNKNOWN'
+    mails[idx].isDraft = false
+    _saveMailsToStorage(mails)
 }
 
 function toggleMarkMail(mailId) {
@@ -320,15 +329,6 @@ function deleteMail(mailId) {
     })
 }
 
-function updateMail(currMail) {
-    query().then(mails => mails.map(mail => {
-        if (currMail.id === mail.id) return currMail
-        return mail
-    })).then(mails => {
-        _saveMailsToStorage(mails)
-    })
-}
-
 function getInboxUnreadMails() {
     const mails = _loadMailsFromStorage() || gMailsToDisplay
     let count = 0
@@ -350,7 +350,7 @@ function _createDraft(draft) {
         subject: draft.subject || '',
         body: draft.body || '',
         isRead: false,
-        sentAt: Date.now(), // TODO - editAt
+        sentAt: Date.now(),
         to: draft.to || '',
         isMarked: false,
         isTrash: false,

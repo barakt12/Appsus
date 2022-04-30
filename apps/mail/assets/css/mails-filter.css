@@ -9,7 +9,7 @@
     border-radius: 7px;
     line-height: 1.6875px;
     position: absolute;
-    left: 144px;
+    left: 154px;
     top: 50%;
     transform: translate(0, -50%);
     padding-left: 10px;
@@ -41,7 +41,7 @@
 
 @media (min-width: 630px) {
     .mail-filter-box-container {
-        left: 258px;
+        left: 268px;
     }
 }
 
@@ -67,4 +67,9 @@
     .mail-filter-box-container {
         width: 680px;
     }
+
+    .mail-filter-box-container input {
+        margin-left: -30px;
+    }
+
 }

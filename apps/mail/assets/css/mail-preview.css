@@ -9,6 +9,7 @@
     padding: 10px;
     margin-left: 21px;
     width: calc(65vw - 30px);
+    left: 10px;
     font-size: 14px;
     position: relative;
     cursor: pointer;
@@ -23,7 +24,7 @@
     display: none;
 }
 
-.preview-container.read {
+.preview-container.read:not(.active) {
     background-color: rgb(245, 247, 247);
 }
 
@@ -92,7 +93,7 @@
     min-width: max-content;
 }
 
-.preview-container .subject:not(.active)::after {
+.preview-container .subject:not(.active):not(.draft):after {
     content: " - ";
 }
 
@@ -240,6 +241,7 @@
     white-space: pre-wrap;
     transform: translate(0);
     line-height: 20px;
+    padding-bottom: 20px;
 }
 
 /* // MQ */
@@ -272,6 +274,7 @@
     .preview-container {
         flex-direction: unset;
         height: 40px;
+        left: unset;
     }
 
     .preview-container .star {

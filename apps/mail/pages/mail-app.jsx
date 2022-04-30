@@ -16,6 +16,7 @@ export class MailApp extends React.Component {
   componentDidMount() {
     const folder = this.props.folder || 'inbox'
     this.setState({ folder }, this.loadMails())
+
   }
 
   componentWillUnmount() {
@@ -38,12 +39,14 @@ export class MailApp extends React.Component {
     this.setState({ folder }, this.loadMails())
   }
 
-  onSetActiveMail = (mailId) => {
+  onSetActiveMail = (mailId, isActive) => {
+    if (isActive) this.props.history.push(`/mail/${mailId}`)
     const { activeMail } = this.state
-    if (mailId === activeMail) {
-      this.setState({ activeMail: null }, this.loadMails)
-      return
-    }
+    // ** Toggle active mail -> Update: Not needed anymore, second click opens Mail details. * /
+    // if (mailId === activeMail) {
+    //   this.setState({ activeMail: null }, this.loadMails)
+    //   return
+    // }
     this.setState({ activeMail: mailId })
     mailService.toggleReadMail(mailId, true).then(this.loadMails)
   }
@@ -72,7 +75,6 @@ export class MailApp extends React.Component {
     return mails
   }
 
-
   onToggleMarkMail = (ev, mailId) => {
     ev.stopPropagation()
     mailService.toggleMarkMail(mailId).then(this.loadMails)
@@ -88,7 +90,7 @@ export class MailApp extends React.Component {
     mailService.deleteMail(mailId).then(this.loadMails)
   }
 
-  onOpenComposeBox = (isOpenState) => { //TODO - OTHER NAME?
+  onOpenComposeBox = (isOpenState) => {
     if (isOpenState) this.setState({ isComposedBoxOpen: true })
     else this.setState({ isComposedBoxOpen: false })
   }
@@ -98,7 +100,7 @@ export class MailApp extends React.Component {
   }
 
   render() {
-    const { mails, folder, activeMail, isComposedBoxOpen, selectedMail } = this.state
+    const { mails, folder, activeMail, isComposedBoxOpen } = this.state
     const app = true
     return (
       <section>

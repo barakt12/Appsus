@@ -73,11 +73,11 @@ export class MailDetails extends React.Component {
                         <Link to={'/mail'} className="back-btn-mail-details"><i className="fa-solid fa-arrow-left"></i></Link>
                         <span className="trash-container-mail-details" onClick={this.onDeleteMail}><img src="apps/mail/assets/img/grey-delete-icon.png" /></span>
                     </div>
-                    <div className="subject">{subject}</div>
-                    <div className="to-and-date-container">
-                        <span className="to">{to}</span>
+                    <div className="sub-and-date-container">
+                        <div className="subject">{subject}</div>
                         <span className="date">{date}</span>
                     </div>
+                    <span className="to">{to}</span>
                     <div className="body">{body}</div>
                 </div>
             </main>
