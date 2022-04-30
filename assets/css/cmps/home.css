@@ -17,10 +17,10 @@
   object-fit: cover;
 }
 .home h1:nth-child(2) {
-  font-size: 6rem;
+  font-size: 4rem;
   width: 500px;
-  left: 5%;
-  top: 350px;
+  left: 4%;
+  top: 220px;
   /* left: 69%; */
   /* top: 40%; */
   color: rgb(42, 42, 42);
@@ -31,14 +31,14 @@
   -webkit-font-smoothing: antialiased;
   color: rgb(20, 20, 20);
   font-family: monsterrat;
-  font-size: 4em;
+  /* font-size: 4em; */
   position: relative;
   /* word-spacing: -40px; */
   /* letter-spacing: -5px; */
 }
 
 .home span {
-  color: #e9c04d;
+  color: #ffffff;
 }
 
 .welcome {
@@ -46,7 +46,7 @@
   /* font-size: 6rem; */
   /* position: relative; */
   width: 700px;
-  left: 5%;
+  left: 4%;
   /* transform: translate(-50%); */
   font-size: 3rem;
 }
