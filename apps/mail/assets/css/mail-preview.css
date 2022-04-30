@@ -2,14 +2,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 130px;
+    height: 85px;
     box-shadow: rgba(100, 121, 143, 0.12) 0px -1px 0px 0px inset;
     padding-bottom: 0;
     padding-top: 0;
-    padding: 15px;
+    padding: 10px;
     margin-left: 21px;
     width: calc(65vw - 30px);
-    font-size: 13px;
+    font-size: 14px;
     position: relative;
     cursor: pointer;
 }
@@ -21,6 +21,10 @@
 
 .preview-container:hover .mail-date {
     display: none;
+}
+
+.preview-container.read {
+    background-color: rgb(245, 247, 247);
 }
 
 .preview-container .full-screen-container,
@@ -40,7 +44,7 @@
 }
 
 .preview-container>* {
-    padding: 8px;
+    padding: 1px;
 }
 
 .preview-container:hover .star {
@@ -105,16 +109,18 @@
     flex-basis: 15%;
     min-width: 116px;
     align-self: flex-start;
+    margin-right: 10px;
 }
 
 .preview-container .mail-date {
-    width: 10%;
+    width: 25%;
     position: absolute;
     right: 10px;
     display: flex;
     justify-content: flex-end;
     padding-right: 0;
     margin-right: 30px;
+    font-size: 11px;
 }
 
 .preview-container .mailAddress.unread,
@@ -242,6 +248,10 @@
     .preview-container {
         width: calc(73vw - 30px);
     }
+
+    .preview-container .mail-date {
+        font-size: 12px;
+    }
 }
 
 @media (min-width: 630px) {
@@ -275,6 +285,8 @@
 
     .preview-container .mailAddress {
         align-self: unset;
+        padding: 8px;
+        margin-right: 30px;
     }
 
     .preview-container .content {

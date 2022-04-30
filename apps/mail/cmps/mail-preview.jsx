@@ -10,7 +10,7 @@ export function MailPreview({ props, mail }) {
   const readingClassName = isRead ? 'read' : 'unread'
   const isActiveMailClassName = activeMail === id ? 'active' : ''
 
-  return (<article className={`preview-container ${isActiveMailClassName}`} onClick={() => onSetActiveMail(id)}>
+  return (<article className={`preview-container ${readingClassName} ${isActiveMailClassName}`} onClick={() => onSetActiveMail(id)}>
     <div className={`star ${starClass}`} onClick={(ev) => onToggleMarkMail(ev, id)}>{star}</div>
     <span className={`mailAddress ${readingClassName}`}>{to}</span>
     <div className="content">

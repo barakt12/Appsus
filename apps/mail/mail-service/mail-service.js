@@ -46,7 +46,7 @@ const gMailsToDisplay = [
         id: 'v5002',
         subject: '♡♡♡♡♡',
         body: `I hope that you are all well and I am loving the pictures of the boys. They are growing so fast. \nRight now we are in Colorado visiting our children. \nIt is always a fun visit. I’\ll post pictures when we get back home next week. \nI miss you all, COME VISIT US!!!!! \nWith love always`,
-        isRead: true,
+        isRead: false,
         sentAt: Date.now(),
         to: 'user@appsus.com',
         isMarked: true,
