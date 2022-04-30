@@ -30,11 +30,11 @@ class _AppHeader extends React.Component {
     const { isOpen } = this.state
     const { pageName, fileEnding } = this.props
     return (
-      <header className='app-header flex '>
+      <header
+        className={`app-header flex ${pageName === 'Appsus' ? 'appsus' : ''}`}
+      >
         <img
-          src={`./assets/img/${
-            pageName === 'Appsus' ? 'home' : pageName
-          }.${
+          src={`./assets/img/${pageName === 'Appsus' ? 'home' : pageName}.${
             pageName === 'about' ? 'png' : fileEnding
           }`}
           className='keep-header'
