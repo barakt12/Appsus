@@ -1,3 +1,4 @@
+const { Route, Link } = ReactRouterDOM
 import { AppHeader } from '../cmps/app-header.jsx'
 
 export function Home() {
@@ -10,6 +11,11 @@ export function Home() {
         <h1>
           Simple Elegant Beautiful<span>.</span>
         </h1>
+        <div className='call-action-btn'>
+          <Link to={`${Math.random() > 0.5 ? '/keep' : '/mail'}`}>
+            Get Started
+          </Link>
+        </div>
       </section>
     </React.Fragment>
   )
