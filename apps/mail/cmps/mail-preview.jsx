@@ -3,18 +3,19 @@ const { Link } = ReactRouterDOM
 
 export function MailPreview({ props, mail }) {
   const { activeMail, onToggleMarkMail, onDeleteMail, onToggleReadMail, onSetActiveMail } = props
-  const { to, subject, sentAt, body, isMarked, isRead, id } = mail
+  const { to, subject, sentAt, body, isMarked, isRead, id, isDraft } = mail
   const date = utilService.formatTime(sentAt)
   const star = isMarked ? '★' : '☆'
   const starClass = isMarked ? 'marked' : ''
+  const draftClass = isDraft ? 'draft' : ''
   const readingClassName = isRead ? 'read' : 'unread'
   const isActiveMailClassName = activeMail === id ? 'active' : ''
 
-  return (<article className={`preview-container ${readingClassName} ${isActiveMailClassName}`} onClick={() => onSetActiveMail(id)}>
+  return (<article className={`preview-container ${readingClassName} ${isActiveMailClassName}`} onClick={() => onSetActiveMail(id, activeMail === id)}>
     <div className={`star ${starClass}`} onClick={(ev) => onToggleMarkMail(ev, id)}>{star}</div>
     <span className={`mailAddress ${readingClassName}`}>{to}</span>
     <div className="content">
-      <span className={`subject ${readingClassName} ${isActiveMailClassName}`}>{`${subject}`}</span>
+      <span className={`subject ${readingClassName} ${isActiveMailClassName} ${draftClass}`}>{`${subject}`}</span>
       <span className={`body ${isActiveMailClassName}`}>{body}</span>
     </div>
     <span className={`mail-date ${readingClassName}`}>{date}</span>

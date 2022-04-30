@@ -12,7 +12,6 @@ export function PreviewToolbar(props) {
         onClick={() => onDuplicateNote(noteId)}
         className='fa-regular fa-clone'
       ></button>
-      <button className='fa-solid fa-envelope-open-text'></button>
     </div>
   )
 }

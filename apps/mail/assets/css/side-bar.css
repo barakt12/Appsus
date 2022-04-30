@@ -42,6 +42,12 @@
 
 }
 
+.side-bar .compose-container span {
+    font-size: 14px;
+    font-weight: 600;
+    padding-right: 14px;
+}
+
 .side-bar .folders-container {
     display: flex;
     flex-direction: column;
@@ -94,8 +100,6 @@
     object-fit: contain;
 }
 
-/* ////////////////////////////////////// */
-
 /* //MQ */
 
 @media (min-width: 630px) {
@@ -106,7 +110,7 @@
     }
 
     .side-bar .compose-container {
-        width: 136px;
+        width: 145px;
     }
 
     .side-bar .folder:hover:not(.active) {

@@ -29,7 +29,6 @@ export class MailsFilter extends React.Component {
           value={searchInp}
           onChange={this.handleChange}
         />
-        <img className="search-icon" src="apps/mail/assets/img/search-bar-icon.png"></img>
       </form>
 
     )
