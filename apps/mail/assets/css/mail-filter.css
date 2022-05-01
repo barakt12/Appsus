@@ -43,7 +43,7 @@
 
 @media (min-width: 630px) {
     .mail-filter-box-container {
-        left: 269px;
+        left: 274px;
         width: unset;
     }
 }
@@ -51,13 +51,13 @@
 @media (min-width: 730px) {
     .mail-filter-box-container {
         width: 48%;
+        margin-left: 10px;
     }
 }
 
 @media (min-width: 775px) {
     .mail-filter-box-container {
         width: 55%;
-        margin-left: 10px;
     }
 }
 
