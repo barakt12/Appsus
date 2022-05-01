@@ -5,47 +5,20 @@ import { MailApp } from './apps/mail/pages/mail-app.jsx'
 import { MailDetails } from './apps/mail/pages/mail-details.jsx'
 const Router = ReactRouterDOM.HashRouter
 const { Route, Switch } = ReactRouterDOM
-export class App extends React.Component {
-  state = {
-    folder: null,
-  }
 
-  onSetFolder = (folder) => {
-    this.setState({ folder })
-  }
-
-  render() {
-    const { folder } = this.state
-    return (
-      <Router>
-        <section className='app'>
-          <Switch>
-            <Route
-              path='/mail/:mailId'
-              component={(props) => (
-                <MailDetails
-                  {...props}
-                  onSetFolder={this.onSetFolder}
-                  folder={folder}
-                />
-              )}
-            />
-            <Route
-              path='/mail'
-              component={(props) => (
-                <MailApp
-                  {...props}
-                  onSetFolder={this.onSetFolder}
-                  folder={folder}
-                />
-              )}
-            />
-            <Route path='/keep' component={KeepApp} />
-            <Route path='/about' component={About} />
-            <Route path='/' component={Home} />
-          </Switch>
-        </section>
-      </Router>
-    )
-  }
+export function App() {
+  return (
+    <Router>
+      <section className='app'>
+        <Switch>
+          <Route path='/mail/view/:mailId' component={MailDetails} />
+          <Route path='/mail/:folder?' component={MailApp} />
+          {/* <Route path='/mail' component={MailApp} /> */}
+          <Route path='/keep' component={KeepApp} />
+          <Route path='/about' component={About} />
+          <Route path='/' component={Home} />
+        </Switch>
+      </section>
+    </Router>
+  )
 }
