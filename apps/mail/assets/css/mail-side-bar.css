@@ -76,6 +76,7 @@
     align-items: center;
     gap: 17px;
     padding-left: 22px;
+    padding-right: 16px;
     width: 100%;
     cursor: pointer;
 }
