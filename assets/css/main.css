@@ -18,9 +18,10 @@
 @import '../../apps/mail/assets/css/mail-header.css';
 @import '../../apps/mail/assets/css/mail-app.css';
 @import '../../apps/mail/assets/css/mail-details.css';
-@import '../../apps/mail/assets/css/mail-compose.css
+@import '../../apps/mail/assets/css/mail-compose.css';
 
 /* Apps  */
+
 @import '../../apps/keep/assets/keep-app.css';
 @import '../../apps/keep/assets/cmps/note-preview.css';
 @import '../../apps/keep/assets/cmps/note-list.css';
