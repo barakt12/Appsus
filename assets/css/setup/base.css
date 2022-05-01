@@ -19,4 +19,6 @@ textarea {
   background-color: unset;
   border: unset;
   font-family: open-sans;
+  overflow: hidden;
+  width: auto;
 }

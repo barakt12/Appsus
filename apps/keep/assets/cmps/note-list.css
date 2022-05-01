@@ -1,9 +1,14 @@
 .note-list {
-  width: 80%;
+  width: 95%;
   column-width: 240px;
   column-count: auto;
   gap: 1px;
-  margin: 0 auto;
   margin-top: 40px;
   padding-bottom: 30px;
+}
+
+@media (min-width: 620px) {
+  .note-list {
+    width: 80%;
+  }
 }

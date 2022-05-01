@@ -1,5 +1,5 @@
 .note-add {
-  width: 250px;
+  width: 315px;
   z-index: 10;
   border: 1px solid transparent;
   border-radius: 8px;
@@ -77,8 +77,8 @@
   display: flex;
   justify-content: space-between;
   /* width: 150px; */
-  right: 50px;
-  top: 60px;
+  right: 20px;
+  top: 5px;
   position: absolute;
 }
 
@@ -101,11 +101,7 @@
 
 @media (min-width: 420px) {
   .note-add {
-    width: 300px;
-  }
-  .type-btns {
-    right: 20px;
-    top: 5px;
+    width: 370px;
   }
 }
 
@@ -126,25 +122,3 @@
     width: 598px;
   }
 }
-
-/* .type-btns {
-  display: flex;
-  justify-content: space-between;
-  right: 20px;
-  top: 5px;
-  position: absolute;
-} */
-
-/* 
-.note-add {
-  width: 250px;
-  z-index: 10;
-  border: 1px solid transparent;
-  border-radius: 8px;
-  box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
-  
-  margin: 32px auto 16px auto; //!!!!!!!!
-
-  background-color: #fff;
-  position: relative;
-} */

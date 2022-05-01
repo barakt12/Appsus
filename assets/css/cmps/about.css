@@ -7,7 +7,7 @@
   height: 90vh;
   width: 100vw;
   margin: 0;
-  background-color: #F1F1F1;
+  background-color: #f1f1f1;
 }
 
 .developer-container {
@@ -44,3 +44,19 @@
   font-weight: 700;
   margin-bottom: 10px;
 }
+
+@media (max-width: 800px) {
+  .about {
+    flex-direction: column;
+    height: 90vh;
+  }
+
+  .about-us-container {
+    line-height: 25px;
+  }
+
+  .about img {
+    width: 285px;
+    height: 285px;
+  }
+} ;

@@ -11,20 +11,19 @@
 @import './cmps/screen.css';
 
 /* Mail */
-@import '../../apps/mail/assets/css/compose-mail-box.css';
 @import '../../apps/mail/assets/css/mail-preview.css';
-@import '../../apps/mail/assets/css/mails-list.css';
-@import '../../apps/mail/assets/css/side-bar.css';
+@import '../../apps/mail/assets/css/mail-list.css';
+@import '../../apps/mail/assets/css/mail-side-bar.css';
 @import '../../apps/mail/assets/css/mails-filter.css';
 @import '../../apps/mail/assets/css/mail-header.css';
 @import '../../apps/mail/assets/css/mail-app.css';
 @import '../../apps/mail/assets/css/mail-details.css';
 
 /* Apps  */
-@import './apps/keep/keep-app.css';
-@import './apps/keep/cmps/note-preview.css';
-@import './apps/keep/cmps/note-list.css';
-@import './apps/keep/cmps/note-add.css';
-@import './apps/keep/cmps/note-img.css';
-@import './apps/keep/cmps/note-video.css';
-@import './apps/keep/cmps/preview-toolbar.css';
+@import '../../apps/keep/assets/keep-app.css';
+@import '../../apps/keep/assets/cmps/note-preview.css';
+@import '../../apps/keep/assets/cmps/note-list.css';
+@import '../../apps/keep/assets/cmps/note-add.css';
+@import '../../apps/keep/assets/cmps/note-img.css';
+@import '../../apps/keep/assets/cmps/note-video.css';
+@import '../../apps/keep/assets/cmps/preview-toolbar.css';
