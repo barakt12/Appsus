@@ -20,7 +20,7 @@ export function Menu({ onToggleMenu }) {
         <img src='./assets/img/keep.svg' className='keep-img' />
         <span>Keep</span>
       </NavLink>
-      <NavLink to='/mail' onClick={() => onToggleMenu()}>
+      <NavLink to='/mail/inbox' onClick={() => onToggleMenu()}>
         <img src='./assets/img/gmail.svg' className='gmail-img' />
         <span>Mail</span>
       </NavLink>
