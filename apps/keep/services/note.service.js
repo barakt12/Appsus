@@ -347,6 +347,9 @@ function duplicateNote(noteId) {
   duplicateNote.id = utilService.makeId()
   duplicateNote.isPinned = false
   notes.unshift(duplicateNote)
+  if (duplicateNote.info.todos.length) {
+    _sortByChecked(duplicateNote.info.todos)
+  }
   _sortByPinned(notes)
   _saveToStorage(notes)
   return Promise.resolve(notes)
