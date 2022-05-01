@@ -14,35 +14,34 @@ export class MailApp extends React.Component {
   }
 
   componentDidMount() {
-    const folder = this.props.folder || 'inbox'
-    this.setState({ folder }, this.loadMails)
-
+    this.loadMails()
   }
 
-  componentWillUnmount() {
-    this.props.onSetFolder(this.state.folder)
+  componentDidUpdate(prevProps) {
+    if (prevProps.match.params.folder !== this.props.match.params.folder) {
+      this.loadMails()
+    }
   }
 
   loadMails = () => {
+    const { folder } = this.props.match.params
     const { filterBy } = this.state
     mailService
       .query(filterBy)
-      .then((mails) => this.getMailsToDisplay(mails))
-      .then((mails) => this.setState({ mails }))
+      .then((mails) => this.getMailsToDisplay(mails, folder))
+      .then((mails) => this.setState({ mails, folder }))
   }
 
   onSetFilter = (filterBy) => {
     this.setState({ filterBy }, this.loadMails())
   }
 
-  onSetFolder = (folder) => {
-    this.setState({ folder }, this.loadMails())
-  }
-
   onSetActiveMail = (mailId, isActive) => {
-    if (isActive) this.props.history.push(`/mail/${mailId}`)
-    const { activeMail } = this.state
+    if (isActive) {
+      this.props.history.push(`/mail/view/${mailId}?folder=${this.state.folder}`)
+    }
     // ** Toggle active mail -> Update: Not needed anymore, second click opens Mail details. * /
+    // const { activeMail } = this.state
     // if (mailId === activeMail) {
     //   this.setState({ activeMail: null }, this.loadMails)
     //   return
@@ -51,8 +50,7 @@ export class MailApp extends React.Component {
     mailService.toggleReadMail(mailId, true).then(this.loadMails)
   }
 
-  getMailsToDisplay = (mails) => {
-    let { folder } = this.state
+  getMailsToDisplay = (mails, folder) => {
     if (!folder) folder = 'inbox'
     const loggedInUserMail = mailService.getLoggedInUserMail()
     switch (folder) {
@@ -107,8 +105,6 @@ export class MailApp extends React.Component {
         <MailHeader onSetFilter={this.onSetFilter} app={app} />
         <main className='main-mail-container'>
           <MailSideBar
-            folder={folder}
-            onSetFolder={this.onSetFolder}
             onOpenComposeBox={this.onOpenComposeBox}
             onGetInboxUnreadMails={this.onGetInboxUnreadMails}
           />

@@ -4,6 +4,15 @@
     position: relative;
 }
 
+.side-bar a {
+    text-decoration: none;
+    color: unset;
+}
+
+.side-bar a div {
+    height: 100%;
+}
+
 .fixed-pos-side-bar {
     position: fixed;
     margin-right: 10px;
@@ -79,15 +88,15 @@
     text-align: left;
 }
 
-.side-bar .inbox-folder.active .content.inbox-content {
+.side-bar a.active .inbox-folder .content.inbox-content {
     color: #d93025;
 }
 
-.side-bar .inbox-folder.active .inbox-img {
+.side-bar a.active .inbox-folder .inbox-img {
     content: url("../img/inbox-icon.png");
 }
 
-.side-bar .folder.active .content {
+.side-bar a.active .folder .content {
     font-weight: 700;
 }
 
@@ -112,7 +121,7 @@
         margin-right: 10px;
     }
 
-    .side-bar .folder:hover:not(.active) {
+    .side-bar a:not(.active) .folder:hover {
         background-color: #e8eaed94;
         border-start-end-radius: 25px;
         border-end-end-radius: 25px;
@@ -129,14 +138,14 @@
         justify-content: flex-end;
     }
 
-    .side-bar .inbox-folder.active {
+    .side-bar a.active .inbox-folder {
         background-color: #fce8e6;
         border-start-end-radius: 25px;
         border-end-end-radius: 25px;
         padding-right: 16px;
     }
 
-    .side-bar .folder.active:not(.inbox-folder) {
+    .side-bar a.active .folder:not(.inbox-folder) {
         background-color: #e8eaed;
         border-start-end-radius: 25px;
         border-end-end-radius: 25px;

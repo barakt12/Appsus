@@ -13,23 +13,18 @@ export class MailDetails extends React.Component {
     }
 
     componentDidMount() {
-        this.loadMail()
+        const urlSrcPrm = new URLSearchParams(this.props.location.search)
+        const folder = urlSrcPrm.get('folder') || 'inbox'
+        this.setState({ folder }, this.loadMail)
     }
 
     loadMail = () => {
         const { mailId } = this.props.match.params
-        console.log(mailId)
         mailService.getMailById(mailId)
             .then(mail => {
                 if (!mail) return this.props.history.push('/mail')
                 this.setState({ mail })
-                this.setFolder()
             })
-    }
-
-    setFolder = () => {
-        const folder = this.props.folder
-        this.setState({ folder })
     }
 
     onOpenComposeBox = (isOpenState) => {
@@ -47,7 +42,7 @@ export class MailDetails extends React.Component {
     }
 
     onSetFolder = (folder) => {
-        this.props.onSetFolder(folder)
+        this.setState({ folder })
         this.props.history.push('/mail')
     }
 
@@ -64,8 +59,6 @@ export class MailDetails extends React.Component {
             <MailHeader onSetFilter={this.onSetFilter} />
             <main className="mail-details-container">
                 <MailSideBar
-                    folder={folder}
-                    onSetFolder={this.onSetFolder}
                     onOpenComposeBox={this.onOpenComposeBox}
                     onGetInboxUnreadMails={this.onGetInboxUnreadMails}
                 />
