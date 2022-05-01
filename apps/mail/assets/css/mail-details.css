@@ -8,12 +8,13 @@
     width: calc(84vw - 30px);
     height: 70vh;
     margin-top: 54px;
-    overflow-y: scroll;
+    margin-left: 87px;
+    overflow-y: auto;
     padding-right: 10px;
 }
 
 .mail-details-container .mail-details-tools-container {
-    width: calc(98vw - 6.25rem);
+    width: 100%;
     display: flex;
     align-items: center;
     height: 48px;
@@ -67,6 +68,7 @@
     padding-bottom: 7px;
     margin-left: 30px;
     font-weight: 600;
+    width: 100%;
 }
 
 .mail-details-container .to span,
@@ -79,6 +81,7 @@
     display: flex;
     padding-bottom: 7px;
     justify-content: space-between;
+    width: 100%;
 }
 
 .sub-and-date-container .date {
@@ -88,7 +91,8 @@
 }
 
 .mail-details-container .body {
-    max-width: 700px;
+    /* max-width: 700px; */
+    width: 90%;
     margin-left: 30px;
     margin-top: 10px;
     font-size: 14px;

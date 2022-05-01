@@ -1,8 +1,8 @@
 import { mailService } from '../mail-service/mail-service.js'
 import { MailHeader } from '../cmps/mail-header.jsx'
-import { MailsSideBar } from '../cmps/mails-side-bar.jsx'
-import { MailsList } from '../cmps/mails-list.jsx'
-import { ComposeMailBox } from '../cmps/compose-mail-box.jsx'
+import { MailSideBar } from '../cmps/mail-side-bar.jsx'
+import { MailList } from '../cmps/mail-list.jsx'
+import { MailCompose } from '../cmps/mail-compose.jsx'
 
 export class MailApp extends React.Component {
   state = {
@@ -15,7 +15,7 @@ export class MailApp extends React.Component {
 
   componentDidMount() {
     const folder = this.props.folder || 'inbox'
-    this.setState({ folder }, this.loadMails())
+    this.setState({ folder }, this.loadMails)
 
   }
 
@@ -106,13 +106,13 @@ export class MailApp extends React.Component {
       <section>
         <MailHeader onSetFilter={this.onSetFilter} app={app} />
         <main className='main-mail-container'>
-          <MailsSideBar
+          <MailSideBar
             folder={folder}
             onSetFolder={this.onSetFolder}
             onOpenComposeBox={this.onOpenComposeBox}
             onGetInboxUnreadMails={this.onGetInboxUnreadMails}
           />
-          <MailsList
+          <MailList
             mails={mails}
             activeMail={activeMail}
             onToggleMarkMail={this.onToggleMarkMail}
@@ -120,7 +120,7 @@ export class MailApp extends React.Component {
             onToggleReadMail={this.onToggleReadMail}
             onSetActiveMail={this.onSetActiveMail}
           />
-          {isComposedBoxOpen && <ComposeMailBox onOpenComposeBox={this.onOpenComposeBox} loadMails={this.loadMails} />}
+          {isComposedBoxOpen && <MailCompose onOpenComposeBox={this.onOpenComposeBox} loadMails={this.loadMails} />}
         </main>
       </section>
     )

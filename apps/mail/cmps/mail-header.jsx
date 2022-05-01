@@ -1,5 +1,5 @@
 
-import { MailsFilter } from '../cmps/mails-filter.jsx'
+import { MailFilter } from '../cmps/mail-filter.jsx'
 import { Menu } from './menu.jsx'
 
 export class MailHeader extends React.Component {
@@ -20,7 +20,7 @@ export class MailHeader extends React.Component {
                 <img className="mail-logo" src="assets/img/gmail.svg"></img>
                 <span>Gmail</span>
             </div>
-            {app && <MailsFilter onSetFilter={this.props.onSetFilter} />}
+            {app && <MailFilter onSetFilter={this.props.onSetFilter} />}
             <a className='menu' onClick={this.onToggleMenu}>
                 <img src='./assets/img/menu.svg' />
             </a>

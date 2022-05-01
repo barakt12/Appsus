@@ -36,3 +36,103 @@
     top: 50%;
     transform: translate(0, -50%)
 }
+
+/* // */
+
+.mail-header nav {
+    position: absolute;
+    right: 17.5px;
+    top: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50px;
+}
+
+.mail-header .openMenu {
+    box-sizing: content-box;
+    display: flex;
+
+    flex-wrap: wrap;
+    width: 300px;
+    background-color: #fff;
+    box-sizing: content-box;
+    display: flex;
+    flex-wrap: wrap;
+    width: 300px;
+    background-color: #fff;
+    padding-left: 12px;
+    padding-top: 12px;
+    position: absolute;
+    right: 0;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    box-shadow: 0px 1px 2px 0px rgb(60 64 67 / 30%),
+        0px 2px 6px 2px rgb(60 64 67 / 15%);
+    z-index: 1;
+    padding-left: 12px;
+    padding-top: 12px;
+    position: absolute;
+    right: 0;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    box-shadow: 0px 1px 2px 0px rgb(60 64 67 / 30%),
+        0px 2px 6px 2px rgb(60 64 67 / 15%);
+}
+
+.mail-header .openMenu a {
+    display: flex;
+    text-decoration: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 6px;
+    margin: 6px;
+    margin-bottom: 15px;
+    width: 84px;
+    height: 84px;
+    border-radius: 8px;
+
+    text-align: center;
+    line-height: 35px;
+    font-size: 14px;
+    padding-top: 15px;
+}
+
+.mail-header .openMenu a:hover {
+    background-color: #e8f0fe;
+    border: none;
+}
+
+.mail-header .menu {
+    position: absolute;
+    right: 0;
+    margin-top: 15px;
+    margin-right: 20px;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    color: #5f6368;
+}
+
+.mail-header .menu-book img {
+    width: 48px;
+}
+
+
+
+@media (min-width: 630px) {
+
+    .mail-header .menu {
+        margin-right: 22px;
+    }
+
+}
+
+@media (min-width: 950px) {
+
+    .mail-header .menu {
+        margin-right: 32px;
+    }
+
+}

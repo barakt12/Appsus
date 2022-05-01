@@ -7,8 +7,9 @@
     padding-bottom: 0;
     padding-top: 0;
     padding: 10px;
-    margin-left: 21px;
-    width: calc(65vw - 30px);
+    margin-left: 23px;
+    margin-right: 18px;
+    width: calc(86vw - 19px);
     left: 10px;
     font-size: 14px;
     position: relative;
@@ -76,7 +77,7 @@
 
 .preview-container .content {
     overflow: hidden;
-    max-width: calc(100vw - 16.25rem);
+    max-width: calc(100vw - 7.25rem);
     display: flex;
     align-self: flex-start;
 }
@@ -108,7 +109,7 @@
 }
 
 .preview-container .mailAddress {
-    flex-basis: 15%;
+    flex-basis: 10%;
     min-width: 116px;
     align-self: flex-start;
     margin-right: 10px;
@@ -121,7 +122,6 @@
     display: flex;
     justify-content: flex-end;
     padding-right: 0;
-    margin-right: 30px;
     font-size: 11px;
 }
 
@@ -135,17 +135,23 @@
 .preview-container .reading-container {
     position: absolute;
     cursor: pointer;
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     box-sizing: content-box;
 }
 
+.preview-container .trash-container img,
+.preview-container .reading-container img {
+    transform: translate(12.5%, 12.5%);
+}
+
+
 .preview-container .trash-container {
-    right: 63px;
+    right: 35px;
 }
 
 .preview-container .reading-container {
-    right: 30px;
+    right: 5px;
 }
 
 .preview-container .reading-container:hover,
@@ -161,7 +167,7 @@
 .preview-container.active {
     border: 1px solid rgba(128, 128, 128, 0.205);
     height: 200px;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
@@ -248,10 +254,6 @@
 /* // MQ */
 
 @media (min-width: 480px) {
-    .preview-container {
-        width: calc(73vw - 30px);
-    }
-
     .preview-container .mail-date {
         font-size: 12px;
     }
@@ -259,15 +261,16 @@
 
 @media (min-width: 630px) {
     .preview-container {
-        width: calc(98vw - 16.25rem);
+        width: calc(95vw - 16.25rem);
         padding-bottom: 10px;
         padding-top: 10px;
         position: relative;
         margin-left: unset;
+        margin-right: 20px;
     }
 
     .preview-container .content {
-        max-width: calc(65vw - 14.25rem);
+        max-width: calc(75vw - 10.25rem);
     }
 }
 
@@ -299,8 +302,26 @@
 
     .preview-container .content {
         align-self: unset;
+        max-width: calc(75vw - 19.05rem);
     }
-    
+
     .preview-container .subject {
         margin-left: 20px;
+    }
+}
+
+@media (min-width: 1300px) {
+
+    .preview-container .content {
+        max-width: calc(75vw - 16.05rem);
+    }
+
+}
+
+@media (min-width: 1500px) {
+
+    .preview-container .content {
+        max-width: calc(75vw - 15rem);
+    }
+
 }

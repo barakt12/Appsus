@@ -1,8 +1,8 @@
 import { utilService } from '../../../services/util.service.js'
 import { mailService } from '../mail-service/mail-service.js'
 import { MailHeader } from '../cmps/mail-header.jsx'
-import { MailsSideBar } from '../cmps/mails-side-bar.jsx'
-import { ComposeMailBox } from '../cmps/compose-mail-box.jsx'
+import { MailSideBar } from '../cmps/mail-side-bar.jsx'
+import { MailCompose } from '../cmps/mail-compose.jsx'
 const { Link } = ReactRouterDOM
 
 export class MailDetails extends React.Component {
@@ -18,6 +18,7 @@ export class MailDetails extends React.Component {
 
     loadMail = () => {
         const { mailId } = this.props.match.params
+        console.log(mailId)
         mailService.getMailById(mailId)
             .then(mail => {
                 if (!mail) return this.props.history.push('/mail')
@@ -62,7 +63,7 @@ export class MailDetails extends React.Component {
         return <section >
             <MailHeader onSetFilter={this.onSetFilter} />
             <main className="mail-details-container">
-                <MailsSideBar
+                <MailSideBar
                     folder={folder}
                     onSetFolder={this.onSetFolder}
                     onOpenComposeBox={this.onOpenComposeBox}
@@ -82,7 +83,7 @@ export class MailDetails extends React.Component {
                     <div className="body">{body}</div>
                 </div>
             </main>
-            {isComposedBoxOpen && <ComposeMailBox onOpenComposeBox={this.onOpenComposeBox} />}
+            {isComposedBoxOpen && <MailCompose onOpenComposeBox={this.onOpenComposeBox} />}
         </section>
     }
 }
