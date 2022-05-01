@@ -6,7 +6,6 @@
 
 .fixed-pos-side-bar {
     position: fixed;
-    width: fit-content;
     margin-right: 10px;
 }
 
@@ -44,6 +43,7 @@
 .side-bar .compose-container span {
     font-size: 14px;
     font-weight: 600;
+    padding-left: 14px;
     padding-right: 14px;
     display: none;
 }
@@ -112,10 +112,6 @@
         margin-right: 10px;
     }
 
-    .side-bar .compose-container {
-        width: 145px;
-    }
-
     .side-bar .folder:hover:not(.active) {
         background-color: #e8eaed94;
         border-start-end-radius: 25px;
@@ -148,7 +144,7 @@
     }
 
     .side-bar .compose-container {
-        width: 121px;
+        width: 145px;
     }
 
     .side-bar .compose-container span {

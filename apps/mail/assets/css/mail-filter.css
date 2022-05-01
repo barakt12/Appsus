@@ -4,7 +4,6 @@
     /* width: 94%; */
     max-width: 720px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     font: 13px/27px;
     background-color: #f1f3f4;
@@ -22,6 +21,7 @@
     width: 93%;
     height: 100%;
     font-size: 16px;
+    padding: 10px;
     background: none;
     border: none;
 }
@@ -43,7 +43,7 @@
 
 @media (min-width: 630px) {
     .mail-filter-box-container {
-        left: 267px;
+        left: 269px;
         width: unset;
     }
 }
@@ -57,22 +57,14 @@
 @media (min-width: 775px) {
     .mail-filter-box-container {
         width: 55%;
-    }
-}
-
-@media (min-width: 950px) {
-    .mail-filter-box-container {
-        left: 290px;
+        margin-left: 10px;
     }
 }
 
 @media (min-width: 1020px) {
     .mail-filter-box-container {
         width: 680px;
-    }
-
-    .mail-filter-box-container input {
-        margin-left: -30px;
+        margin-left: 10px;
     }
 
 }

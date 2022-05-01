@@ -12,7 +12,7 @@
 }
 
 .mail-header .logo-container {
-    width: 109px;
+    width: 260px;
     height: 40px;
     position: absolute;
     left: 22px;
@@ -34,10 +34,16 @@
     right: 0;
     color: rgb(71, 71, 71);
     top: 50%;
-    transform: translate(0, -50%)
+    transform: translate(0, -50%);
+    margin-right: 154px;
 }
 
 /* // */
+
+.mail-header .app-header a {
+    text-decoration: none;
+    color: black;
+}
 
 .mail-header nav {
     position: absolute;
@@ -108,7 +114,7 @@
     position: absolute;
     right: 0;
     margin-top: 15px;
-    margin-right: 20px;
+    margin-right: 29px;
     width: 35px;
     height: 35px;
     cursor: pointer;
@@ -121,18 +127,18 @@
 
 
 
-@media (min-width: 630px) {
+/* @media (min-width: 630px) {
 
     .mail-header .menu {
         margin-right: 22px;
     }
 
-}
+} */
 
-@media (min-width: 950px) {
+/* @media (min-width: 950px) {
 
     .mail-header .menu {
         margin-right: 32px;
     }
 
-}
+} */

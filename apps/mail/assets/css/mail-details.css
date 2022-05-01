@@ -7,21 +7,21 @@
 .mail-details-container .content-container {
     width: calc(84vw - 30px);
     height: 70vh;
+    margin-left: 62px;
+    margin-right: 38px;
     margin-top: 54px;
-    margin-left: 87px;
     overflow-y: auto;
-    padding-right: 10px;
 }
 
 .mail-details-container .mail-details-tools-container {
-    width: 100%;
+    width: calc(84vw - 30px);
     display: flex;
     align-items: center;
     height: 48px;
     box-shadow: inset 0 -1px 0 0 #dadce093;
     position: absolute;
     top: 0;
-    padding-left: 16px;
+    /* padding-left: 16px; */
 }
 
 .mail-details-container .mail-details-tools-container>* {
@@ -32,7 +32,7 @@
     justify-content: center;
     width: 20px;
     height: 20px;
-    padding: 10px;
+    margin-right: 10px;
     cursor: pointer;
 }
 
@@ -58,7 +58,7 @@
     min-height: fit-content;
     display: flex;
     align-items: center;
-    margin-left: 30px;
+    /* margin-left: 30px; */
 }
 
 .mail-details-container .to,
@@ -66,14 +66,14 @@
     display: flex;
     font-size: 14px;
     padding-bottom: 7px;
-    margin-left: 30px;
+    /* padding-left: 30px; */
     font-weight: 600;
     width: 100%;
 }
 
 .mail-details-container .to span,
 .mail-details-container .from span {
-    margin-left: 15px;
+    padding-left: 15px;
     font-weight: 500;
 }
 
@@ -91,9 +91,8 @@
 }
 
 .mail-details-container .body {
-    /* max-width: 700px; */
     width: 90%;
-    margin-left: 30px;
+    /* padding-left: 30px; */
     margin-top: 10px;
     font-size: 14px;
     line-height: 23px;
@@ -105,13 +104,12 @@
 
 @media (min-width: 630px) {
     .mail-details-container .content-container {
-        width: calc(95vw - 16.25rem);
+        width: calc(95vw - 19rem);
+        margin-right: 36px;
     }
 
-}
-
-@media (min-width: 800px) {
     .mail-details-container .subject {
         font-size: 19px;
+        margin-top: 20px;
     }
 }
