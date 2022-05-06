@@ -21,9 +21,9 @@
   font-size: 4rem;
   width: 500px;
   left: 4%;
-  top: 220px;
+  /* top: 160px; */
+  top: calc(100vh - 80vh);
   /* left: 69%; */
-  /* top: 40%; */
   color: rgb(42, 42, 42);
 }
 .home h1 {
@@ -54,7 +54,9 @@
 
 .call-action-btn {
   position: relative;
-  top: 170px;
+  /* top: 100px; */
+  top: calc(100vh - 87vh);
+  margin-top: 20px;
   left: 4%;
   display: flex;
   justify-content: flex-start;
@@ -113,16 +115,27 @@
     color: white;
     font-size: 2.5rem;
     width: 300px;
-    top: 410px;
+    /* top: 410px; */
+    top: calc(100vh - 460px);
   }
 
   .call-action-btn {
-    top: 375px;
+    top: calc(100vh - 500px);
     height: 60px;
     width: 280px;
   }
 
   .call-action-btn a {
     font-size: 2.5rem;
+  }
+}
+
+@media (min-width: 1090px) {
+  .home h1:nth-child(2) {
+    top: calc(100vh - 80vh);
+  }
+
+  .call-action-btn {
+    top: calc(100vh - 85vh);
   }
 }

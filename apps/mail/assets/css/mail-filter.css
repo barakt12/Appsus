@@ -1,29 +1,29 @@
 .mail-filter-box-container {
-    height: 46px;
-    width: calc(97vw - 212px);
-    /* width: 94%; */
-    max-width: 720px;
-    display: flex;
-    align-items: center;
-    font: 13px/27px;
-    background-color: #f1f3f4;
-    border-radius: 7px;
-    line-height: 1.6875px;
-    position: absolute;
-    left: 154px;
-    top: 50%;
-    transform: translate(0, -50%);
-    padding-left: 10px;
-    padding-right: 10px;
+  height: 46px;
+  width: calc(97vw - 212px);
+  /* width: 94%; */
+  max-width: 720px;
+  display: flex;
+  align-items: center;
+  font: 13px/27px;
+  background-color: #f1f3f4;
+  border-radius: 7px;
+  line-height: 1.6875px;
+  position: absolute;
+  left: 154px;
+  top: 50%;
+  transform: translate(0, -50%);
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .mail-filter-box-container input {
-    width: 93%;
-    height: 100%;
-    font-size: 16px;
-    padding: 10px;
-    background: none;
-    border: none;
+  width: 93%;
+  height: 100%;
+  font-size: 16px;
+  padding: 10px;
+  background: none;
+  border: none;
 }
 
 .mail-filter-box-container:focus-within {
@@ -33,44 +33,43 @@
 }
 
 .mail-filter-box-container input::-webkit-input-placeholder {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 .mail-filter-box-container input:focus-visible {
-    outline: none;
+  outline: none;
 }
 
 .mail-filter-box-container img {
-    width: 25px;
-    height: 25px;
+  width: 25px;
+  height: 25px;
 }
 
 /* // MQ */
 
 @media (min-width: 630px) {
-    .mail-filter-box-container {
-        left: 274px;
-        width: unset;
-    }
+  .mail-filter-box-container {
+    left: 234px;
+    width: unset;
+  }
 }
 
 @media (min-width: 730px) {
-    .mail-filter-box-container {
-        width: 48%;
-        margin-left: 10px;
-    }
+  .mail-filter-box-container {
+    width: 48%;
+    margin-left: 10px;
+  }
 }
 
 @media (min-width: 775px) {
-    .mail-filter-box-container {
-        width: 55%;
-    }
+  .mail-filter-box-container {
+    width: 55%;
+  }
 }
 
 @media (min-width: 1020px) {
-    .mail-filter-box-container {
-        width: 680px;
-        margin-left: 10px;
-    }
-
+  .mail-filter-box-container {
+    width: 680px;
+    margin-left: 10px;
+  }
 }
