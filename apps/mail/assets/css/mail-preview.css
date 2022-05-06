@@ -260,7 +260,7 @@
 
 @media (min-width: 630px) {
   .preview-container {
-    width: calc(95vw - 13.25rem);
+    width: calc(95vw - 14.25rem);
     padding-bottom: 10px;
     padding-top: 10px;
     position: relative;
